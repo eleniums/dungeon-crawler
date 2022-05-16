@@ -27,8 +27,7 @@ func getLargePotion():
    return LARGE_POTION
 	
 func _on_HealthPotion_area_entered(_area):
-	self.set_process(false)
-	self.hide()
+	queue_free()
 	Stats.current_hp += healing_potency
 	if Stats.current_hp > Stats.max_hp:
 		Stats.current_hp = Stats.max_hp
