@@ -31,4 +31,4 @@ func _on_HealthPotion_area_entered(_area):
 	Stats.current_hp += healing_potency
 	if Stats.current_hp > Stats.max_hp:
 		Stats.current_hp = Stats.max_hp
-	print("collected health potion, +" + str(healing_potency) + "to hp. Current HP: " + str(Stats.current_hp))
+	print("Collected health potion, +" + str(healing_potency) + " to hp. Current HP: " + str(Stats.current_hp))
