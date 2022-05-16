@@ -887,8 +887,9 @@ __meta__ = {
 
 [node name="PlayerKnight" parent="." instance=ExtResource( 2 )]
 position = Vector2( 43, 33 )
+z_index = 1
 
-[node name="Items" type="Node" parent="."]
+[node name="Items" type="Node2D" parent="."]
 
 [node name="Coin" parent="Items" instance=ExtResource( 3 )]
 position = Vector2( 222, 132 )
@@ -899,7 +900,8 @@ position = Vector2( 91, 113 )
 [node name="HealthPotion" parent="Items" instance=ExtResource( 7 )]
 position = Vector2( 170, 64 )
 
-[node name="HUD" type="Node" parent="."]
+[node name="HUD" type="Node2D" parent="."]
+z_index = 2
 
 [node name="Money" type="Label" parent="HUD"]
 margin_left = 215.0
