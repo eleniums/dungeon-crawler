@@ -20,4 +20,4 @@ func _on_Coin_area_entered(_area):
 	self.set_process(false)
 	self.hide()
 	Stats.money += 1
-	print("money: " + str(Stats.money))
+	print("collected coin, +1 to money: " + str(Stats.money))
