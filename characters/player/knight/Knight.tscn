@@ -55,12 +55,13 @@ extents = Vector2( 7, 3 )
 extents = Vector2( 3, 5 )
 
 [node name="Player_Knight" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,6 +70,8 @@ position = Vector2( 0, 13 )
 shape = SubResource( 10 )
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, 8 )
