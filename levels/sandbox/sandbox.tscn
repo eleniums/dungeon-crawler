@@ -1,8 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/knight/Knight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://doodads/coin/Coin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/PeaberryBase.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://levels/sandbox/Level.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -862,7 +864,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 43/shapes = [  ]
 43/z_index = 0
 
+[sub_resource type="DynamicFont" id=26]
+font_data = ExtResource( 4 )
+
 [node name="Main" type="Node2D"]
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -877,7 +883,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node" parent="."]
 
 [node name="Coin" parent="Items" instance=ExtResource( 3 )]
 position = Vector2( 222, 132 )
@@ -887,3 +893,14 @@ position = Vector2( 91, 113 )
 
 [node name="Player_Knight" parent="." instance=ExtResource( 2 )]
 position = Vector2( 43, 33 )
+
+[node name="HUD" type="Node" parent="."]
+
+[node name="Money" type="Label" parent="HUD"]
+margin_left = 215.0
+margin_top = 5.0
+margin_right = 306.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 26 )
+text = "$0"
+align = 2

@@ -1,8 +1,9 @@
-extends Node
+extends Node2D
 
-var max_hp = 6
-var current_hp = 6
-var money = 0
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,6 +12,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Input.is_action_just_released("ui_cancel"):
-		get_tree().quit()
+func _process(delta):
+	$HUD/Money.text = "$" + str(Stats.money)
