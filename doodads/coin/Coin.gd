@@ -19,4 +19,4 @@ func _ready():
 func _on_Coin_area_entered(_area):
 	queue_free()
 	Stats.money += 1
-	print("collected coin, +1 to money: " + str(Stats.money))
+	print("Collected coin, +1 to money. Total money: " + str(Stats.money))
