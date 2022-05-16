@@ -18,6 +18,9 @@ func _process(_delta):
 		
 	update_money()
 	update_health()
+	
+	if Stats.current_hp == 0:
+		$HUD/GameOver.visible = true
 
 func update_money():
 	$HUD/Money.text = "$" + str(Stats.money)
