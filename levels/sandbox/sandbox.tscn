@@ -873,5 +873,5 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 55, 59 )
+[node name="Player_Knight" parent="." instance=ExtResource( 2 )]
+position = Vector2( 43, 33 )
