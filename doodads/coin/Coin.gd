@@ -16,7 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_Coin_area_entered(area):
+func _on_Coin_area_entered(_area):
 	self.set_process(false)
 	self.hide()
 	Stats.money += 1
