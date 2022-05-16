@@ -10,7 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		_velocity.x = MOVE_SPEED
 		$AnimatedSprite.flip_h = false
@@ -34,4 +34,4 @@ func _process(delta):
 	if _velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = "idle"
 		
-	move_and_slide(_velocity, Vector2.UP)
+	_velocity = move_and_slide(_velocity, Vector2.UP)
