@@ -14,6 +14,10 @@ config/name="dungeon-crawler"
 run/main_scene="res://levels/sandbox/sandbox.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Stats="*res://characters/player/Stats.gd"
+
 [display]
 
 window/size/width=320
