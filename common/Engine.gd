@@ -15,7 +15,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func hurt_player(damage):
+func hurt_player(damage, dir):
 	current_hp -= damage
 	print("Player takes " + str(damage) + " damage. Current HP: " + str(current_hp))
-	player.initiate_knockback(Vector2.LEFT)
+	player.initiate_knockback(dir)

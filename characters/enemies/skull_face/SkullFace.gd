@@ -55,5 +55,8 @@ func handle_movement():
 	_velocity = move_and_slide(_velocity, Vector2.UP)
 
 
-func _on_Hitbox_area_entered(_area):
-	Engine.hurt_player(TOUCH_DAMAGE)
+func _on_Hitbox_area_entered(area):
+	var dir = Vector2.RIGHT
+	if area.global_position.x < global_position.x:
+		dir = Vector2.LEFT
+	Engine.hurt_player(TOUCH_DAMAGE, dir)
