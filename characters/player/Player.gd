@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
 export var MOVE_SPEED = 85
+export var KNOCKBACK_SPEED = 400
 
 var _velocity = Vector2()
+var _knockback_timer = 0
+var _knockback_dir = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		_velocity.x = MOVE_SPEED
 		$AnimatedSprite.flip_h = false
@@ -34,4 +37,12 @@ func _process(_delta):
 	if _velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = "idle"
 		
-	_velocity = move_and_slide(_velocity, Vector2.UP)
+	if _knockback_timer > 0:
+		_knockback_timer -= delta
+		_velocity = move_and_slide(_knockback_dir * KNOCKBACK_SPEED, Vector2.UP)
+	else:
+		_velocity = move_and_slide(_velocity, Vector2.UP)
+
+func initiate_knockback(dir: Vector2):
+	_knockback_dir = dir
+	_knockback_timer = 0.05

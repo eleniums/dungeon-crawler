@@ -16,7 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Stats="*res://characters/player/Stats.gd"
+Engine="*res://common/Engine.gd"
 
 [display]
 
