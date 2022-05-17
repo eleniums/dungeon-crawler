@@ -69,7 +69,7 @@ func is_invincible():
 func initiate_knockback(dir: Vector2):
 	_knockback_dir = dir
 	_knockback_timer = 0.05
-	_invincibility_timer = 2.0
+	_invincibility_timer = 0.75
 	
 	modulate = Color(1,0,0,1)
 	_flash = false
