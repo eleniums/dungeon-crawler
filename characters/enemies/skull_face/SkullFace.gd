@@ -6,6 +6,7 @@ export var TOUCH_DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
+var _hit_timer = 0
 
 var _hp = 3
 
@@ -18,6 +19,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if _hit_timer > 0:
+		_hit_timer -= delta
+		modulate = Color(1,0,0,1)
+	else:
+		modulate = Color(1,1,1,1)
+	
 	ai(delta)
 	handle_movement()
 
@@ -65,6 +72,7 @@ func _on_Hitbox_area_entered(area):
 		Engine.hurt_player(TOUCH_DAMAGE, dir)
 	elif area.is_in_group("player_weapon"):
 		_hp -= Engine.weapon_damage
+		_hit_timer = 0.15
 		print("Monster took " + str(Engine.weapon_damage) + " damage. HP remaining: " + str(_hp))
 		if _hp <= 0:
 			queue_free()
