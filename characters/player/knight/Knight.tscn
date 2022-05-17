@@ -1,7 +1,22 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 336, 24, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 3, 9 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -58,10 +73,22 @@ extents = Vector2( 3, 5 )
 collision_layer = 2
 script = ExtResource( 2 )
 
+[node name="Weapon" type="AnimatedSprite" parent="."]
+position = Vector2( 13, 10 )
+rotation = 1.5708
+frames = SubResource( 13 )
+
+[node name="WeaponHitbox" type="Area2D" parent="Weapon" groups=["player_weapon"]]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/WeaponHitbox"]
+position = Vector2( 0, -1 )
+shape = SubResource( 14 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,7 +96,7 @@ visible = false
 position = Vector2( 0, 13 )
 shape = SubResource( 10 )
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2
 collision_mask = 12
 
