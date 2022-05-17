@@ -16,3 +16,4 @@ func _ready():
 
 func hurt_player(damage):
 	current_hp -= damage
+	print("Player takes " + str(damage) + " damage. Current HP: " + str(current_hp))
