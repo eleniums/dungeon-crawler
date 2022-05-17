@@ -16,6 +16,7 @@ func _ready():
 #	pass
 
 func hurt_player(damage, dir):
-	current_hp -= damage
-	print("Player takes " + str(damage) + " damage. Current HP: " + str(current_hp))
-	player.initiate_knockback(dir)
+	if !player.is_invincible():
+		current_hp -= damage
+		print("Player takes " + str(damage) + " damage. Current HP: " + str(current_hp))
+		player.initiate_knockback(dir)

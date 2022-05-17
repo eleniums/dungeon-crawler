@@ -6,6 +6,8 @@ export var KNOCKBACK_SPEED = 400
 var _velocity = Vector2()
 var _knockback_timer = 0
 var _knockback_dir = Vector2()
+var _invincibility_timer = 0
+var _flash = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,14 +39,35 @@ func _process(delta):
 	if _velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = "idle"
 		
+	if _invincibility_timer > 0:
+		_invincibility_timer -= delta
+		
 	if _knockback_timer > 0:
-		modulate = Color(1,0,0,1)
 		_knockback_timer -= delta
 		_velocity = move_and_slide(_knockback_dir * KNOCKBACK_SPEED, Vector2.UP)
 	else:
-		modulate = Color(1,1,1,1)
 		_velocity = move_and_slide(_velocity, Vector2.UP)
+
+func is_invincible():
+	return _invincibility_timer > 0
 
 func initiate_knockback(dir: Vector2):
 	_knockback_dir = dir
 	_knockback_timer = 0.05
+	_invincibility_timer = 2.0
+	
+	modulate = Color(1,0,0,1)
+	_flash = false
+	$FlashTimer.start()
+
+func _on_Timer_timeout():
+	if _flash:
+		modulate = Color(1,0,0,1)
+		_flash = false
+	else:
+		modulate = Color(1,1,1,1)
+		_flash = true
+	if _invincibility_timer > 0:
+		$FlashTimer.start()
+	else:
+		modulate = Color(1,1,1,1)
