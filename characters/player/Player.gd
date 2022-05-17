@@ -38,9 +38,11 @@ func _process(delta):
 		$AnimatedSprite.animation = "idle"
 		
 	if _knockback_timer > 0:
+		modulate = Color(1,0,0,1)
 		_knockback_timer -= delta
 		_velocity = move_and_slide(_knockback_dir * KNOCKBACK_SPEED, Vector2.UP)
 	else:
+		modulate = Color(1,1,1,1)
 		_velocity = move_and_slide(_velocity, Vector2.UP)
 
 func initiate_knockback(dir: Vector2):
