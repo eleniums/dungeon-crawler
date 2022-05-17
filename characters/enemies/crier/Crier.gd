@@ -15,7 +15,7 @@ var _hp = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_timer = 0.5
-	_v_timer = 1.5
+	_v_timer = 1.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +36,7 @@ func ai(delta):
 			DIRECTION.x = -1
 		else:
 			DIRECTION.x = 1
-		_timer = 0.5
+		_timer = 1.0
 		
 	_v_timer -= delta
 	if _v_timer <= 0:
@@ -44,7 +44,7 @@ func ai(delta):
 			DIRECTION.y = -1
 		else:
 			DIRECTION.y = 1
-		_v_timer = 1.5
+		_v_timer = 1.0
 
 func handle_movement():
 	if DIRECTION.x > 0:
