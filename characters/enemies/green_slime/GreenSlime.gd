@@ -26,7 +26,7 @@ func _process(delta):
 	ai(delta)
 	handle_movement()
 
-func ai(delta):
+func ai(_delta):
 	if Engine.player.position.x < position.x:
 		DIRECTION.x = -1
 	elif Engine.player.position.x > position.x:
