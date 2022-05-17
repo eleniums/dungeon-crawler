@@ -46,7 +46,8 @@ func _process(delta):
 	if _velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = "idle"
 		
-	_weapon_cooldown -= delta
+	if _weapon_cooldown > 0:
+		_weapon_cooldown -= delta
 	if Input.is_action_just_pressed("ui_select") and _weapon_cooldown <= 0:
 		$Weapon.visible = true
 		$Weapon/WeaponHitbox/CollisionShape2D.disabled = false

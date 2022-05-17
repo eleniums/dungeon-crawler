@@ -7,6 +7,7 @@ export var TOUCH_DAMAGE = 1
 var _velocity = Vector2()
 var _timer = 0
 var _hit_timer = 0
+var _arrow_cooldown = 0
 
 var _hp = 3
 
@@ -36,16 +37,29 @@ func ai(delta):
 		elif DIRECTION == Vector2.LEFT:
 			DIRECTION = Vector2.RIGHT
 		_timer = 2
+		
+	if _arrow_cooldown > 0:
+		_arrow_cooldown -= delta
+		$RayCast2D.enabled = false
+	else:
+		$RayCast2D.enabled = true
+	if $RayCast2D.is_colliding():
+		print("Monster sees player!")
+		_arrow_cooldown = 3.0
 
 func handle_movement():
 	if DIRECTION.x > 0:
 		_velocity.x = MOVE_SPEED
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.animation = "move"
+		if $RayCast2D.cast_to.x < 0:
+			$RayCast2D.cast_to.x *= -1
 	elif DIRECTION.x < 0:
 		_velocity.x = -MOVE_SPEED
 		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.animation = "move"
+		if $RayCast2D.cast_to.x > 0:
+			$RayCast2D.cast_to.x *= -1
 	else:
 		_velocity.x = 0
 		
