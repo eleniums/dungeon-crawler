@@ -1,20 +1,21 @@
 extends KinematicBody2D
 
-export var MOVE_SPEED = 40
+export var MOVE_SPEED = 60
 export var DIRECTION = Vector2.RIGHT
 export var TOUCH_DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
+var _v_timer = 0
 var _hit_timer = 0
-var _arrow_cooldown = 0
 
-var _hp = 3
+var _hp = 1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_timer = 2
+	_v_timer = 0.5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,36 +32,31 @@ func _process(delta):
 func ai(delta):
 	_timer -= delta
 	if _timer <= 0:
-		if DIRECTION == Vector2.RIGHT:
-			DIRECTION = Vector2.LEFT
-		elif DIRECTION == Vector2.LEFT:
-			DIRECTION = Vector2.RIGHT
+		if DIRECTION.x >= 0:
+			DIRECTION.x = -1
+		elif DIRECTION.x < 0:
+			DIRECTION.x = 1
 		_timer = 2
 		
-	if _arrow_cooldown > 0:
-		_arrow_cooldown -= delta
-		$RayCast2D.enabled = false
-	else:
-		$RayCast2D.enabled = true
-	if $RayCast2D.is_colliding():
-		print("Monster sees player! Firing arrow.")
-		var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
-		Engine.fire_arrow(pos, DIRECTION)
-		_arrow_cooldown = 3.0
+	_v_timer -= delta
+	if _v_timer <= 0:
+		if DIRECTION.y >= 0:
+			DIRECTION.y = -1
+		elif DIRECTION.y < 0:
+			DIRECTION.y = 1
+		_v_timer = 0.5
+		
+	print(DIRECTION)
 
 func handle_movement():
 	if DIRECTION.x > 0:
 		_velocity.x = MOVE_SPEED
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.animation = "move"
-		if $RayCast2D.cast_to.x < 0:
-			$RayCast2D.cast_to.x *= -1
 	elif DIRECTION.x < 0:
 		_velocity.x = -MOVE_SPEED
 		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.animation = "move"
-		if $RayCast2D.cast_to.x > 0:
-			$RayCast2D.cast_to.x *= -1
 	else:
 		_velocity.x = 0
 		
