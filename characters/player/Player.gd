@@ -21,10 +21,16 @@ func _process(delta):
 		_velocity.x = MOVE_SPEED
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.animation = "move"
+		$Weapon.flip_v = false
+		if $Weapon.position.x < 0:
+			$Weapon.position.x *= -1
 	elif Input.is_action_pressed("ui_left"):
 		_velocity.x = -MOVE_SPEED
 		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.animation = "move"
+		$Weapon.flip_v = true
+		if $Weapon.position.x > 0:
+			$Weapon.position.x *= -1
 	else:
 		_velocity.x = 0
 		
