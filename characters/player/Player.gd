@@ -7,6 +7,7 @@ var _velocity = Vector2()
 var _knockback_timer = 0
 var _knockback_dir = Vector2()
 var _invincibility_timer = 0
+var _weapon_cooldown = 0
 var _flash = false
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +40,13 @@ func _process(delta):
 	if _velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = "idle"
 		
+	_weapon_cooldown -= delta
+	if Input.is_action_just_pressed("ui_select") and _weapon_cooldown <= 0:
+		$Weapon.visible = true
+		$Weapon/WeaponHitbox/CollisionShape2D.disabled = false
+		$WeaponTimer.start()
+		_weapon_cooldown = 0.45
+		
 	if _invincibility_timer > 0:
 		_invincibility_timer -= delta
 		
@@ -47,6 +55,7 @@ func _process(delta):
 		_velocity = move_and_slide(_knockback_dir * KNOCKBACK_SPEED, Vector2.UP)
 	else:
 		_velocity = move_and_slide(_velocity, Vector2.UP)
+
 
 func is_invincible():
 	return _invincibility_timer > 0
@@ -60,7 +69,7 @@ func initiate_knockback(dir: Vector2):
 	_flash = false
 	$FlashTimer.start()
 
-func _on_Timer_timeout():
+func _on_FlashTimer_timeout():
 	if _flash:
 		modulate = Color(1,0,0,1)
 		_flash = false
@@ -71,3 +80,7 @@ func _on_Timer_timeout():
 		$FlashTimer.start()
 	else:
 		modulate = Color(1,1,1,1)
+
+func _on_WeaponTimer_timeout():
+	$Weapon.visible = false
+	$Weapon/WeaponHitbox/CollisionShape2D.disabled = true

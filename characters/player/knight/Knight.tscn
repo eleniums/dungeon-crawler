@@ -74,6 +74,7 @@ collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Weapon" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 13, 10 )
 rotation = 1.5708
 frames = SubResource( 13 )
@@ -85,11 +86,12 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/WeaponHitbox"]
 position = Vector2( 0, -1 )
 shape = SubResource( 14 )
+disabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -109,4 +111,9 @@ shape = SubResource( 11 )
 wait_time = 0.15
 one_shot = true
 
-[connection signal="timeout" from="FlashTimer" to="." method="_on_Timer_timeout"]
+[node name="WeaponTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_WeaponTimer_timeout"]
