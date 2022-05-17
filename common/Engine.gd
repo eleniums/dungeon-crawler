@@ -3,6 +3,7 @@ extends Node
 var max_hp = 6
 var current_hp = 6
 var money = 0
+var weapon_damage = 1
 
 var player = null
 
