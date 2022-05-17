@@ -44,7 +44,9 @@ func ai(delta):
 	else:
 		$RayCast2D.enabled = true
 	if $RayCast2D.is_colliding():
-		print("Monster sees player!")
+		print("Monster sees player! Firing arrow.")
+		var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
+		Engine.fire_arrow(pos, DIRECTION)
 		_arrow_cooldown = 3.0
 
 func handle_movement():
