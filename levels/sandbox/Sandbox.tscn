@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/knight/Knight.tscn" type="PackedScene" id=2]
@@ -11,8 +11,7 @@
 [ext_resource path="res://doodads/torch/Torch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://doodads/brazier/Brazier.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/enemies/skull_face/SkullFace.tscn" type="PackedScene" id=11]
-[ext_resource path="res://characters/enemies/little_devil/LittleDevil.tscn" type="PackedScene" id=12]
-[ext_resource path="res://characters/enemies/tuskie/Tuskie.tscn" type="PackedScene" id=13]
+[ext_resource path="res://characters/enemies/green_slime/GreenSlime.tscn" type="PackedScene" id=12]
 [ext_resource path="res://characters/enemies/crier/Crier.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1015,14 +1014,11 @@ position = Vector2( 170, 64 )
 [node name="SkullFace" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 139, 86 )
 
-[node name="LittleDevil" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 181, 141 )
-
-[node name="Tuskie" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 129, 38 )
-
 [node name="Crier" parent="Enemies" instance=ExtResource( 14 )]
 position = Vector2( 132, 120 )
+
+[node name="GreenSlime" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 157, 160 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 10
