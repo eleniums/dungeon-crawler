@@ -13,3 +13,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func hurt_player(damage):
+	current_hp -= damage

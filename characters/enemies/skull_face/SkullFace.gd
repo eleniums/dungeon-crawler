@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var MOVE_SPEED = 40
 export var DIRECTION = Vector2.RIGHT
+export var TOUCH_DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
@@ -52,3 +53,7 @@ func handle_movement():
 		$AnimatedSprite.animation = "idle"
 		
 	_velocity = move_and_slide(_velocity, Vector2.UP)
+
+
+func _on_Hitbox_area_entered(area):
+	Stats.hurt_player(TOUCH_DAMAGE)
