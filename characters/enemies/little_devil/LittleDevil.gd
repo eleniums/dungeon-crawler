@@ -45,8 +45,6 @@ func ai(delta):
 		elif DIRECTION.y < 0:
 			DIRECTION.y = 1
 		_v_timer = 0.5
-		
-	print(DIRECTION)
 
 func handle_movement():
 	if DIRECTION.x > 0:
