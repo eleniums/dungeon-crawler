@@ -17,7 +17,7 @@ func _ready():
 func setLargePotion(is_large):
 	LARGE_POTION = is_large
 	if is_large:
-		healing_potency = 6
+		healing_potency = 5
 		$AnimatedSprite.animation = "large"
 	else:
 		healing_potency = 2
