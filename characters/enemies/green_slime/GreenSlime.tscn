@@ -1,39 +1,39 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=1]
-[ext_resource path="res://characters/enemies/crier/Crier.gd" type="Script" id=2]
+[ext_resource path="res://characters/enemies/green_slime/GreenSlime.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 432, 16, 16, 16 )
+region = Rect2( 432, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 448, 16, 16, 16 )
+region = Rect2( 448, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 464, 16, 16, 16 )
+region = Rect2( 464, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 480, 16, 16, 16 )
+region = Rect2( 480, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 368, 16, 16, 16 )
+region = Rect2( 432, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
-region = Rect2( 384, 16, 16, 16 )
+region = Rect2( 448, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
-region = Rect2( 400, 16, 16, 16 )
+region = Rect2( 464, 112, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
-region = Rect2( 416, 16, 16, 16 )
+region = Rect2( 480, 112, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -49,22 +49,23 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 4.5, 3 )
+extents = Vector2( 7, 3 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 4.5, 5.5 )
+extents = Vector2( 6, 7 )
 
-[node name="Crier" type="KinematicBody2D"]
+[node name="GreenSlime" type="KinematicBody2D"]
 collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 5 )
+position = Vector2( 0, 5 )
 shape = SubResource( 10 )
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -72,7 +73,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 0.5, 2.5 )
+position = Vector2( 0, 1 )
 shape = SubResource( 11 )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
