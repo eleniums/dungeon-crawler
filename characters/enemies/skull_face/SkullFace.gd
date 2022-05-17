@@ -55,5 +55,5 @@ func handle_movement():
 	_velocity = move_and_slide(_velocity, Vector2.UP)
 
 
-func _on_Hitbox_area_entered(area):
-	Stats.hurt_player(TOUCH_DAMAGE)
+func _on_Hitbox_area_entered(_area):
+	Engine.hurt_player(TOUCH_DAMAGE)
