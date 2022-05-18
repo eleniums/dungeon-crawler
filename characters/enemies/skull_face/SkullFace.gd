@@ -26,7 +26,7 @@ func _process(delta):
 		modulate = Color(1,1,1,1)
 	
 	ai(delta)
-	handle_movement()
+	handle_movement(delta)
 
 func ai(delta):
 	_timer -= delta
@@ -48,7 +48,7 @@ func ai(delta):
 		Engine.fire_arrow(pos, DIRECTION)
 		_arrow_cooldown = 3.0
 
-func handle_movement():
+func handle_movement(delta):
 	if DIRECTION.x > 0:
 		_velocity.x = MOVE_SPEED
 		$AnimatedSprite.flip_h = false
@@ -76,7 +76,9 @@ func handle_movement():
 	if _velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = "idle"
 		
-	_velocity = move_and_slide(_velocity, Vector2.UP)
+	var collisions = move_and_collide(_velocity * delta)
+	if collisions:
+		DIRECTION *= -1
 
 
 func _on_Hitbox_area_entered(area):
