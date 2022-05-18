@@ -11,6 +11,6 @@ func _ready():
 #	pass
 
 
-func _on_Hitbox_area_entered(area):
+func _on_Hitbox_area_entered(_area):
 	Engine.player.disable()
 	Engine.fader.fade_to_black()
