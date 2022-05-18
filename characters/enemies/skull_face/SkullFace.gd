@@ -94,3 +94,5 @@ func _on_Hitbox_area_entered(area):
 		if _hp <= 0:
 			queue_free()
 			print("Monster defeated.")
+			var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
+			Engine.add_explosion(pos)
