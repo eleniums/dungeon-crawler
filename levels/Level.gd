@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Engine.fader.fade_in()
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +43,7 @@ func update_health():
 		$HUD/Health2.animation = "empty"
 	if Engine.current_hp <= 4:
 		$HUD/Health3.animation = "empty"
+
 
 func _on_Fader_faded_to_black():
 	print("Player exited level.")
