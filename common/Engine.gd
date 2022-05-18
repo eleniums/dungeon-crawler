@@ -15,7 +15,7 @@ var explosion = preload("res://doodads/explosion/Explosion.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/Main/Player")
+	player = get_node("/root/Main/Players/Player")
 	weapons = get_node("/root/Main/Weapons")
 	explosions = get_node("/root/Main/Explosions")
 	fader = get_node("/root/Main/HUD/Fader")
