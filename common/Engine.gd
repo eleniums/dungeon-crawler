@@ -38,7 +38,7 @@ func _ready():
 
 	reset_level()
 
-	player = get_node("/root/Main/Players/Player")
+	player = get_node("/root/Main/Players/Player_Knight")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
