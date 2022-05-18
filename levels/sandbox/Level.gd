@@ -14,8 +14,10 @@ func _process(_delta):
 	update_money()
 	update_health()
 	
-	if Engine.current_hp == 0:
+	if Engine.current_hp <= 0 and $HUD/GameOver.visible == false:
 		$HUD/GameOver.visible = true
+		Engine.add_explosion(Engine.player.position)
+		Engine.player.disable()
 
 func update_money():
 	$HUD/Money.text = "$" + str(Engine.money)
