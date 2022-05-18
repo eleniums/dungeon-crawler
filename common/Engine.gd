@@ -16,6 +16,7 @@ var enemies = null
 var explosions = null
 
 var knight = preload("res://characters/player/knight/Knight.tscn")
+var ladder = preload("res://doodads/ladder/Ladder.tscn")
 var arrow = preload("res://weapons/arrow/Arrow.tscn")
 var explosion = preload("res://doodads/explosion/Explosion.tscn")
 
@@ -38,6 +39,7 @@ func _ready():
 
 	reset_level()
 
+	# need to do this after level generation, otherwise player doesn't exist
 	player = get_node("/root/Main/Players/Player_Knight")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,6 +61,7 @@ func reset_level():
 	add_new(knight, player_pos, players)
 	
 	# add exit second to make sure it can be placed
+	add_new(ladder, get_available_position(exists), doodads)
 	
 	# add obstacles
 	
