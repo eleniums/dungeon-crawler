@@ -11,3 +11,4 @@ Roguelike dungeon crawler game created for a hackathon.
 - https://docs.godotengine.org/en/stable/tutorials/2d/using_tilemaps.html
 - https://docs.godotengine.org/en/stable/tutorials/physics/physics_introduction.html
 - https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
+- https://godotengine.org/qa/3218/how-to-create-a-custom-signal-in-gdscript
