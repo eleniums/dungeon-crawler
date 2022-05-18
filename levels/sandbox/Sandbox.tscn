@@ -1077,3 +1077,5 @@ script = ExtResource( 17 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="faded_to_black" from="HUD/Fader" to="." method="_on_Fader_faded_to_black"]
