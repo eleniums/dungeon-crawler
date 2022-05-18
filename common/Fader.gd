@@ -22,13 +22,15 @@ func _process(_delta):
 		FadeState.FADE_TO_BLACK:
 			var result = lerp(get_modulate(), Color(0,0,0,1), 0.2)
 			set_modulate(result)
-			if result == Color(0,0,0,1):
+			if is_equal_approx(result.a, 1):
 				emit_signal("faded_to_black")
+				_state = FadeState.NO_FADE
 		FadeState.FADE_IN:
 			var result = lerp(get_modulate(), Color(0,0,0,0), 0.2)
 			set_modulate(result)
-			if result == Color(0,0,0,0):
+			if is_equal_approx(result.a, 0):
 				emit_signal("faded_in")
+				_state = FadeState.NO_FADE
 
 func fade_to_black():
 	set_modulate(Color(0,0,0,0))
