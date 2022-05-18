@@ -8,6 +8,7 @@ var weapon_damage = 1
 var player = null
 var weapons = null
 var explosions = null
+var fader = null
 
 var arrow = preload("res://weapons/arrow/Arrow.tscn")
 var explosion = preload("res://doodads/explosion/Explosion.tscn")
@@ -17,6 +18,7 @@ func _ready():
 	player = get_node("/root/Main/Player")
 	weapons = get_node("/root/Main/Weapons")
 	explosions = get_node("/root/Main/Explosions")
+	fader = get_node("/root/Main/HUD/Fader")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
