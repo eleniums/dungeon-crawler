@@ -82,3 +82,4 @@ func _on_Hitbox_area_entered(area):
 		if _hp <= 0:
 			queue_free()
 			print("Monster defeated.")
+			Engine.add_explosion(position)
