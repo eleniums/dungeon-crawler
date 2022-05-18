@@ -84,7 +84,7 @@ func reset_level():
 	add_new(torch, Vector2(200,8), doodads)
 	
 	# add obstacles
-	print("Adding obstacles")
+	print("Adding obstacles...")
 	var num_obstacles = get_rand(1,100) % 4
 	print("Number of obstacles to add: " + str(num_obstacles))
 	for _i in num_obstacles:
@@ -96,6 +96,20 @@ func reset_level():
 			add_new(brazier, get_available_position(exists), doodads)
 	
 	# add items
+	print("Adding items...")
+	var num_items = get_rand(1,100) % 7 + 2
+	print("Number of items to add: " + str(num_items))
+	for _i in num_items:
+		if get_rand(1,100) >= 10:
+			# most items should be coins
+			add_new(coin, get_available_position(exists), items)
+		elif get_rand(1,100) <= 10:
+			# small chance to create large health potion
+			var potion = add_new(health_potion, get_available_position(exists), items)
+			potion.LARGE_POTION = true
+		else:
+			# add a small health potion
+			add_new(health_potion, get_available_position(exists), items)
 	
 	# add enemies
 	
@@ -147,3 +161,4 @@ func add_new(preload_node, pos, dest_node):
 	var new_node = preload_node.instance()
 	new_node.position = pos
 	dest_node.add_child(new_node)
+	return new_node
