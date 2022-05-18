@@ -79,8 +79,8 @@ func initiate_knockback(dir: Vector2):
 func disable():
 	visible = false
 	set_process(false)
-	$Weapon/WeaponHitbox/CollisionShape2D.disabled = true
-	$Hitbox/CollisionShape2D.disabled = true
+	$Weapon/WeaponHitbox/CollisionShape2D.set_deferred("disabled",true)
+	$Hitbox/CollisionShape2D.set_deferred("disabled",true)
 
 func _on_FlashTimer_timeout():
 	if _flash:
