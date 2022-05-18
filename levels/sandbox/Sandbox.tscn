@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/knight/Knight.tscn" type="PackedScene" id=2]
@@ -12,10 +12,8 @@
 [ext_resource path="res://doodads/brazier/Brazier.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/enemies/skull_face/SkullFace.tscn" type="PackedScene" id=11]
 [ext_resource path="res://characters/enemies/little_devil/LittleDevil.tscn" type="PackedScene" id=12]
-[ext_resource path="res://characters/enemies/tuskie/Tuskie.tscn" type="PackedScene" id=13]
+[ext_resource path="res://doodads/ladder/Ladder.tscn" type="PackedScene" id=13]
 [ext_resource path="res://characters/enemies/crier/Crier.tscn" type="PackedScene" id=14]
-[ext_resource path="res://characters/enemies/brown_slime/BrownSlime.tscn" type="PackedScene" id=15]
-[ext_resource path="res://characters/enemies/green_slime/GreenSlime.tscn" type="PackedScene" id=16]
 [ext_resource path="res://common/Fader.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1000,6 +998,9 @@ position = Vector2( 40, 150 )
 [node name="Brazier2" parent="Doodads" instance=ExtResource( 10 )]
 position = Vector2( 280, 150 )
 
+[node name="Ladder" parent="Doodads" instance=ExtResource( 13 )]
+position = Vector2( 184, 150 )
+
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Coin" parent="Items" instance=ExtResource( 3 )]
@@ -1015,23 +1016,14 @@ position = Vector2( 170, 64 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="GreenSlime" parent="Enemies" instance=ExtResource( 16 )]
-position = Vector2( 269, 57 )
-
 [node name="SkullFace" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 141, 83 )
 
 [node name="Crier" parent="Enemies" instance=ExtResource( 14 )]
 position = Vector2( 34, 131 )
 
-[node name="Tuskie" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( 225, 148 )
-
 [node name="LittleDevil" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 153, 48 )
-
-[node name="BrownSlime" parent="Enemies" instance=ExtResource( 15 )]
-position = Vector2( 122, 40 )
 
 [node name="Explosions" type="Node2D" parent="."]
 z_index = 2
@@ -1047,6 +1039,9 @@ margin_bottom = 21.0
 custom_fonts/font = SubResource( 26 )
 text = "$0"
 align = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GameOver" type="Label" parent="HUD"]
 visible = false
@@ -1061,6 +1056,9 @@ margin_bottom = 8.0
 custom_fonts/font = SubResource( 26 )
 text = "Game Over"
 align = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Health1" parent="HUD" instance=ExtResource( 6 )]
 position = Vector2( 22, 11 )
@@ -1076,3 +1074,6 @@ modulate = Color( 0, 0, 0, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 17 )
+__meta__ = {
+"_edit_lock_": true
+}
