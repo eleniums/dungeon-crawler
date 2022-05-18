@@ -27,16 +27,16 @@ func _process(delta):
 	handle_movement()
 
 func ai(_delta):
-	if Engine.player.position.x < position.x - 10:
+	if Engine.player.position.x < position.x - 1:
 		DIRECTION.x = -1
-	elif Engine.player.position.x > position.x + 10:
+	elif Engine.player.position.x > position.x + 1:
 		DIRECTION.x = 1
 	else:
 		DIRECTION.x = 0
 		
-	if Engine.player.position.y < position.y - 10:
+	if Engine.player.position.y < position.y - 1:
 		DIRECTION.y = -1
-	elif Engine.player.position.y > position.y + 10:
+	elif Engine.player.position.y > position.y + 1:
 		DIRECTION.y = 1
 	else:
 		DIRECTION.y = 0
