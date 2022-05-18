@@ -19,6 +19,20 @@ func _process(_delta):
 		Engine.add_explosion(Engine.player.position)
 		Engine.player.disable()
 
+func reset_level():
+	# add player first to make sure they have a spot
+	
+	# add exit second to make sure it can be placed
+	
+	# add obstacles
+	
+	# add items
+	
+	# add enemies
+	
+	# all done, fade in and begin!
+	Engine.fader.fade_in()
+
 func update_money():
 	$HUD/Money.text = "$" + str(Engine.money)
 	
