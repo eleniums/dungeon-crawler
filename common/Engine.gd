@@ -17,6 +17,20 @@ var explosions = null
 
 var knight = preload("res://characters/player/knight/Knight.tscn")
 var ladder = preload("res://doodads/ladder/Ladder.tscn")
+
+var brazier = preload("res://doodads/brazier/Brazier.tscn")
+var coin = preload("res://doodads/coin/Coin.tscn")
+var health_potion = preload("res://doodads/health_potion/HealthPotion.tscn")
+var pillar = preload("res://doodads/pillar/Pillar.tscn")
+var torch = preload("res://doodads/torch/Torch.tscn")
+
+var brown_slime = preload("res://characters/enemies/brown_slime/BrownSlime.tscn")
+var green_slime = preload("res://characters/enemies/green_slime/GreenSlime.tscn")
+var crier = preload("res://characters/enemies/crier/Crier.tscn")
+var little_devil = preload("res://characters/enemies/little_devil/LittleDevil.tscn")
+var tuskie = preload("res://characters/enemies/tuskie/Tuskie.tscn")
+var skull_face = preload("res://characters/enemies/skull_face/SkullFace.tscn")
+
 var arrow = preload("res://weapons/arrow/Arrow.tscn")
 var explosion = preload("res://doodads/explosion/Explosion.tscn")
 
@@ -61,9 +75,25 @@ func reset_level():
 	add_new(knight, player_pos, players)
 	
 	# add exit second to make sure it can be placed
+	print("Adding exit...")
 	add_new(ladder, get_available_position(exists), doodads)
 	
+	# add torches to wall
+	print("Adding wall torches...")
+	add_new(torch, Vector2(120,8), doodads)
+	add_new(torch, Vector2(200,8), doodads)
+	
 	# add obstacles
+	print("Adding obstacles")
+	var num_obstacles = get_rand(1,100) % 4
+	print("Number of obstacles to add: " + str(num_obstacles))
+	for _i in num_obstacles:
+		if get_rand(1,100) >= 50:
+			var pillar_pos = get_available_position(exists)
+			pillar_pos.y -= 20
+			add_new(pillar, pillar_pos, doodads)
+		else:
+			add_new(brazier, get_available_position(exists), doodads)
 	
 	# add items
 	
@@ -78,8 +108,8 @@ func get_available_position(exists) -> Vector2:
 	# find an empty spot in the grid
 	var loc = get_rand(0,179)
 	while exists[loc] == true:
-		loc = get_rand(0,179)		
-	
+		loc = get_rand(0,179)
+
 	# spot is now in use
 	exists[loc] = true
 	
