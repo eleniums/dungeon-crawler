@@ -75,6 +75,12 @@ func initiate_knockback(dir: Vector2):
 	modulate = Color(1,0,0,1)
 	_flash = false
 	$FlashTimer.start()
+	
+func disable():
+	visible = false
+	set_process(false)
+	$Weapon/WeaponHitbox/CollisionShape2D.disabled = true
+	$Hitbox/CollisionShape2D.disabled = true
 
 func _on_FlashTimer_timeout():
 	if _flash:
