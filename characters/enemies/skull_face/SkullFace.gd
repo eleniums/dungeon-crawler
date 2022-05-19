@@ -4,6 +4,7 @@ export var MOVE_SPEED = 40
 export var DIRECTION = Vector2.RIGHT
 export var HP = 3
 export var DAMAGE = 1
+export var COINS_HELD = 3
 
 var _velocity = Vector2()
 var _timer = 0
@@ -96,3 +97,5 @@ func _on_Hitbox_area_entered(area):
 			print("Monster defeated.")
 			var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
 			Engine.add_explosion(pos)
+			for _i in COINS_HELD:
+				Engine.add_coin_drop(position)
