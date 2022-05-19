@@ -20,7 +20,7 @@ func _process(_delta):
 		Engine.player.disable()
 
 func update_money():
-	$HUD/Money.text = "$" + str(Engine.money)
+	$HUD/Money.text = "$" + str(Engine.money) + "  Lvl " + str(Engine.current_level)
 	
 func update_health():
 	if Engine.current_hp >= 2:
