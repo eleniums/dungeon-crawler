@@ -4,6 +4,7 @@ export var MOVE_SPEED = 30
 export var DIRECTION = Vector2()
 export var HP = 3
 export var DAMAGE = 1
+export var COINS_HELD = 3
 
 var _velocity = Vector2()
 var _hit_timer = 0
@@ -82,3 +83,5 @@ func _on_Hitbox_area_entered(area):
 			queue_free()
 			print("Monster defeated.")
 			Engine.add_explosion(position)
+			for _i in COINS_HELD:
+				Engine.add_coin_drop(position)
