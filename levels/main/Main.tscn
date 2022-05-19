@@ -1058,4 +1058,3 @@ align = 1
 valign = 1
 
 [connection signal="faded_to_black" from="HUD/Fader" to="." method="_on_Fader_faded_to_black"]
-[connection signal="faded_to_black" from="HUD/Fader" to="PauseMenu/PauseContainer" method="_on_Fader_faded_to_black"]
