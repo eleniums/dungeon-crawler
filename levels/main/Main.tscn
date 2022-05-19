@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Dungeon_Tileset.png" type="Texture" id=1]
+[ext_resource path="res://levels/Pause.gd" type="Script" id=2]
 [ext_resource path="res://assets/PeaberryBase.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://levels/Level.gd" type="Script" id=5]
 [ext_resource path="res://doodads/health/Health.tscn" type="PackedScene" id=6]
@@ -939,6 +940,9 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [sub_resource type="DynamicFont" id=26]
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=28]
+font_data = ExtResource( 4 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 5 )
 __meta__ = {
@@ -999,13 +1003,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -42.5
-margin_top = -8.0
-margin_right = 42.5
-margin_bottom = 8.0
+margin_left = -102.0
+margin_top = -30.0
+margin_right = 102.0
+margin_bottom = 30.0
 custom_fonts/font = SubResource( 26 )
-text = "Game Over"
-align = 2
+text = "* Game Over *
+Press Enter to continue"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1020,6 +1026,7 @@ position = Vector2( 38, 8 )
 position = Vector2( 54, 8 )
 
 [node name="Fader" type="ColorRect" parent="HUD"]
+pause_mode = 2
 modulate = Color( 0, 0, 0, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1027,5 +1034,27 @@ script = ExtResource( 17 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 9
+
+[node name="PauseContainer" type="CenterContainer" parent="PauseMenu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="PauseLabel" type="Label" parent="PauseMenu/PauseContainer"]
+margin_left = 76.0
+margin_top = 60.0
+margin_right = 243.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 28 )
+text = "* Paused *
+Press Esc to resume
+Q to stop playing"
+align = 1
+valign = 1
 
 [connection signal="faded_to_black" from="HUD/Fader" to="." method="_on_Fader_faded_to_black"]
