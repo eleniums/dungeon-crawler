@@ -6,6 +6,9 @@ var money = 0
 var weapon_damage = 1
 var current_level = 1
 
+var hiscore_coins = 0
+var hiscore_floors = 0
+
 var player = null
 var fader = null
 
@@ -40,8 +43,17 @@ var potion_particles = preload("res://doodads/health_potion/PotionParticles.tscn
 var seeded_rng = RandomNumberGenerator.new()
 var rng = RandomNumberGenerator.new()
 
+var save_pass = "notsecure"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_scores()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func start_game():
 	fader = get_node("/root/Main/HUD/Fader")
 	
 	players = get_node("/root/Main/Players")
@@ -58,14 +70,21 @@ func _ready():
 	# used for random events not based on the level seed
 	rng.randomize()
 
-	reset_level()
+	# zero out default stats
+	max_hp = 6
+	current_hp = 6
+	money = 0
+	weapon_damage = 1
+	current_level = 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	reset_level()
 
 func reset_level():
 	print("Generating level...")
+
+	# check for hiscore
+	if Engine.current_level > Engine.hiscore_floors:
+		Engine.hiscore_floors = Engine.current_level
 	
 	# clear out all existing stuff first
 	delete_children(weapons)
@@ -244,3 +263,25 @@ func add_new(preload_node, pos, dest_node):
 func delete_children(node):
 	for n in node.get_children():
 		n.queue_free()
+
+func save_scores():
+	var save_dict = {
+		"hiscore_coins" : hiscore_coins,
+		"hiscore_floors" : hiscore_floors,
+	}
+	var save_game = File.new()
+	save_game.open_encrypted_with_pass("user://scores.save", File.WRITE, save_pass)
+	save_game.store_line(to_json(save_dict))
+	save_game.close()
+	print("Saved player hi-scores.")
+
+func load_scores():
+	var save_game = File.new()
+	if not save_game.file_exists("user://scores.save"):
+		return # no save to load so just skip it
+	save_game.open_encrypted_with_pass("user://scores.save", File.READ, save_pass)
+	var save_dict = parse_json(save_game.get_line())
+	save_game.close()
+	hiscore_coins = save_dict["hiscore_coins"]
+	hiscore_floors = save_dict["hiscore_floors"]
+	print("Loaded player hi-scores.")

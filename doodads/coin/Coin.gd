@@ -21,3 +21,7 @@ func _on_Coin_area_entered(_area):
 	Engine.money += 1
 	print("Collected coin, +1 to money. Total money: " + str(Engine.money))
 	Engine.add_coin_particles(position)
+
+	# check for hiscore
+	if Engine.money > Engine.hiscore_coins:
+		Engine.hiscore_coins = Engine.money
