@@ -231,9 +231,9 @@ func add_coin_particles(pos: Vector2):
 	
 func add_potion_particles(pos: Vector2):
 	var new_potion_particles = potion_particles.instance()
-	new_potion_particles.position = pos
+	new_potion_particles.position.y += 8
 	new_potion_particles.emitting = true
-	explosions.add_child(new_potion_particles)
+	player.add_child(new_potion_particles)
 	
 func add_new(preload_node, pos, dest_node):
 	var new_node = preload_node.instance()
