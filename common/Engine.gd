@@ -35,7 +35,7 @@ var skull_face = preload("res://characters/enemies/skull_face/SkullFace.tscn")
 var arrow = preload("res://weapons/arrow/Arrow.tscn")
 var explosion = preload("res://doodads/explosion/Explosion.tscn")
 
-var rng = RandomNumberGenerator.new()
+var seeded_rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,8 +49,8 @@ func _ready():
 	explosions = get_node("/root/Main/Explosions")
 	
 	# used for level generation so seeds can be reproduced
-	rng.randomize() # initialize with a random time-based seed
-	#rng.seed = hash("testseed") # initialize with a user provided seed
+	seeded_rng.randomize() # initialize with a random time-based seed
+	#seeded_rng.seed = hash("testseed") # initialize with a user provided seed
 
 	reset_level()
 
@@ -183,7 +183,7 @@ func get_available_position(exists) -> Vector2:
 
 func get_rand(low_inclusive:int, high_inclusive:int):
 	# generates a random number in the given range, inclusive
-	return rng.randi_range(low_inclusive, high_inclusive)
+	return seeded_rng.randi_range(low_inclusive, high_inclusive)
 
 func hurt_player(damage, dir):
 	if !player.is_invincible():
