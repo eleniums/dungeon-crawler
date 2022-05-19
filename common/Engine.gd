@@ -114,7 +114,43 @@ func reset_level():
 	
 	# add enemies
 	print("Adding enemies...")
-	# TODO: add enemies based on current level
+	var enemy_hp_mod = current_level / 20
+	var enemy_dmg_mod = clamp(current_level / 20, 0, 5)
+	var min_enemies = 3
+	var max_enemies = clamp(current_level / 5, min_enemies, 5) + 1 # min of 3-4 enemies, max of 5-6 enemies
+	var num_enemies = get_rand(min_enemies, max_enemies)
+	print("Number of enemies to add: " + str(num_enemies))
+	for _i in num_enemies:
+		# range increases with floor level, 100 max but rand can go higher than 100, making lower numbers less likely
+		var enemy_roll = clamp(get_rand(0, 70 + current_level), 0, 100)
+		print("Enemy roll: " + str(enemy_roll))
+		if enemy_roll >= 70: # tier 3 enemies, strongest
+			if get_rand(0,100) >= 50:
+				var enemy = add_new(skull_face, get_available_position(exists), enemies)
+				enemy.HP += enemy_hp_mod
+				enemy.DAMAGE += enemy_dmg_mod
+			else:
+				var enemy = add_new(green_slime, get_available_position(exists), enemies)
+				enemy.HP += enemy_hp_mod
+				enemy.DAMAGE += enemy_dmg_mod
+		elif enemy_roll >= 45: # tier 2 enemies
+			if get_rand(0,100) >= 50:
+				var enemy = add_new(little_devil, get_available_position(exists), enemies)
+				enemy.HP += enemy_hp_mod
+				enemy.DAMAGE += enemy_dmg_mod
+			else:
+				var enemy = add_new(brown_slime, get_available_position(exists), enemies)
+				enemy.HP += enemy_hp_mod
+				enemy.DAMAGE += enemy_dmg_mod
+		else: # tier 1 enemies, weakest
+			if get_rand(0,100) >= 50:
+				var enemy = add_new(crier, get_available_position(exists), enemies)
+				enemy.HP += enemy_hp_mod
+				enemy.DAMAGE += enemy_dmg_mod
+			else:
+				var enemy = add_new(tuskie, get_available_position(exists), enemies)
+				enemy.HP += enemy_hp_mod
+				enemy.DAMAGE += enemy_dmg_mod
 	
 	# all done, fade in and begin!
 	fader.fade_in()
