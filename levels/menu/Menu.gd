@@ -13,9 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if $CanvasLayer/Instructions.visible and Input.is_action_just_released("ui_accept"):
+	if $CanvasLayer/Instructions.visible and Input.is_action_just_pressed("ui_accept"):
 		change_menu(MenuState.MAIN)
-	elif $CanvasLayer/Credits.visible and Input.is_action_just_released("ui_accept"):
+	elif $CanvasLayer/Credits.visible and Input.is_action_just_pressed("ui_accept"):
 		change_menu(MenuState.MAIN)
 
 func change_menu(new_menu):
@@ -23,6 +23,7 @@ func change_menu(new_menu):
 	match new_menu:
 		MenuState.MAIN:
 			$CanvasLayer/MainMenu.visible = true
+			$CanvasLayer/MainMenu/VBoxContainer/Start.grab_focus()
 		MenuState.INSTRUCTIONS:
 			$CanvasLayer/Instructions.visible = true
 		MenuState.CREDITS:
