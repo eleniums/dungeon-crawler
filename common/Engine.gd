@@ -64,6 +64,14 @@ func _ready():
 func reset_level():
 	print("Generating level...")
 	
+	# clear out all existing stuff first
+	delete_children(players)
+	delete_children(doodads)
+	delete_children(items)
+	delete_children(weapons)
+	delete_children(enemies)
+	delete_children(explosions)
+	
 	# game has 18 x 10 usable squares
 	var exists = []
 	for _i in range(180):
@@ -202,3 +210,7 @@ func add_new(preload_node, pos, dest_node):
 	new_node.position = pos
 	dest_node.add_child(new_node)
 	return new_node
+
+func delete_children(node):
+	for n in node.get_children():
+		n.queue_free()
