@@ -229,7 +229,7 @@ func add_coin_particles(pos: Vector2):
 	new_coin_particles.emitting = true
 	explosions.add_child(new_coin_particles)
 	
-func add_potion_particles(pos: Vector2):
+func add_potion_particles():
 	var new_potion_particles = potion_particles.instance()
 	new_potion_particles.position.y += 8
 	new_potion_particles.emitting = true

@@ -98,4 +98,4 @@ func _on_Hitbox_area_entered(area):
 			var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
 			Engine.add_explosion(pos)
 			for _i in COINS_HELD:
-				Engine.add_coin_drop(position)
+				Engine.call_deferred("add_coin_drop", position)
