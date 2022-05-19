@@ -44,6 +44,7 @@ func _on_Credits_pressed():
 	change_menu(MenuState.CREDITS)
 
 func _on_Quit_pressed():
+	Engine.save_scores()
 	get_tree().quit()
 
 func _on_Fader_faded_to_black():

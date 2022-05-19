@@ -1,7 +1,7 @@
 # dungeon-crawler
 Roguelike dungeon crawler game created for a hackathon.
 
-## Tilesets
+## Assets
 - https://0x72.itch.io/dungeontileset-ii
 - https://pixel-poem.itch.io/dungeon-assetpuck
 - https://emhuo.itch.io/peaberry-pixel-font
@@ -12,3 +12,4 @@ Roguelike dungeon crawler game created for a hackathon.
 - https://docs.godotengine.org/en/stable/tutorials/physics/physics_introduction.html
 - https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
 - https://godotengine.org/qa/3218/how-to-create-a-custom-signal-in-gdscript
+- https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html
