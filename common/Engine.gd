@@ -81,6 +81,10 @@ func start_game():
 
 func reset_level():
 	print("Generating level...")
+
+	# check for hiscore
+	if Engine.current_level > Engine.hiscore_floors:
+		Engine.hiscore_floors = Engine.current_level
 	
 	# clear out all existing stuff first
 	delete_children(weapons)
