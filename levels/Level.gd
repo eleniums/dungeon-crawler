@@ -15,6 +15,9 @@ func _process(_delta):
 		$HUD/GameOver.visible = true
 		Engine.add_explosion(Engine.player.position)
 		Engine.player.disable()
+	elif $HUD/GameOver.visible and (Input.is_action_just_released("ui_accept") or Input.is_action_just_released("ui_cancel")):
+		get_tree().quit()
+		
 
 func update_money():
 	$HUD/Money.text = "$" + str(Engine.money) + "  Lvl " + str(Engine.current_level)
