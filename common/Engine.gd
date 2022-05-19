@@ -101,7 +101,7 @@ func reset_level():
 	var num_items = get_rand(1,100) % 7 + 2
 	print("Number of items to add: " + str(num_items))
 	for _i in num_items:
-		if get_rand(1,100) >= 10:
+		if get_rand(1,100) >= 5:
 			# most items should be coins
 			add_new(coin, get_available_position(exists), items)
 		elif get_rand(1,100) <= 10:
