@@ -65,6 +65,13 @@ func start_game():
 	# used for random events not based on the level seed
 	rng.randomize()
 
+	# zero out default stats
+	max_hp = 6
+	current_hp = 6
+	money = 0
+	weapon_damage = 1
+	current_level = 1
+
 	reset_level()
 
 func reset_level():
