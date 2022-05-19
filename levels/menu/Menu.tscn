@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://characters/player/knight/Knight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PeaberryBase.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://common/Fader.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -41,6 +45,17 @@ custom_fonts/font = SubResource( 1 )
 text = "Dungeon Crawler"
 align = 1
 valign = 1
+
+[node name="Hiscores" type="Label" parent="CanvasLayer/MainMenu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -16.0
+margin_right = 152.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Hi-score - Coins: $0, Floors: 0"
+valign = 2
 
 [node name="Player_Knight" parent="CanvasLayer/MainMenu" instance=ExtResource( 1 )]
 position = Vector2( 49, 66 )
