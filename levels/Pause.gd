@@ -16,12 +16,9 @@ func _process(_delta):
 			get_tree().paused = false
 			visible = false
 		elif Input.is_action_just_released("quit"):
-			Engine.fader.fade_to_black()
+			get_tree().change_scene("res://levels/menu/Menu.tscn")
+			get_tree().paused = false
 	elif Input.is_action_just_released("ui_cancel"):
 		get_tree().paused = true
 		visible = true
 
-
-func _on_Fader_faded_to_black():
-	get_tree().change_scene("res://levels/menu/Menu.tscn")
-	get_tree().paused = false
