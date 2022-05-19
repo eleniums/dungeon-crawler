@@ -16,6 +16,7 @@ func _process(_delta):
 		Engine.add_explosion(Engine.player.position)
 		Engine.player.disable()
 	elif $HUD/GameOver.visible and (Input.is_action_just_released("ui_accept") or Input.is_action_just_released("ui_cancel")):
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://levels/menu/Menu.tscn")
 		
 
