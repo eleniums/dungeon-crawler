@@ -1026,6 +1026,7 @@ position = Vector2( 38, 8 )
 position = Vector2( 54, 8 )
 
 [node name="Fader" type="ColorRect" parent="HUD"]
+pause_mode = 2
 modulate = Color( 0, 0, 0, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1036,7 +1037,7 @@ __meta__ = {
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 pause_mode = 2
-layer = 11
+layer = 9
 
 [node name="PauseContainer" type="CenterContainer" parent="PauseMenu"]
 visible = false
@@ -1057,3 +1058,4 @@ align = 1
 valign = 1
 
 [connection signal="faded_to_black" from="HUD/Fader" to="." method="_on_Fader_faded_to_black"]
+[connection signal="faded_to_black" from="HUD/Fader" to="PauseMenu/PauseContainer" method="_on_Fader_faded_to_black"]
