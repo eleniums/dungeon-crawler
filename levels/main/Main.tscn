@@ -1052,7 +1052,7 @@ margin_bottom = 120.0
 custom_fonts/font = SubResource( 28 )
 text = "* Paused *
 Press Esc to resume
-Q to quit game"
+Q to stop playing"
 align = 1
 valign = 1
 

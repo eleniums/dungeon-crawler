@@ -16,7 +16,7 @@ func _process(_delta):
 			get_tree().paused = false
 			visible = false
 		elif Input.is_action_just_released("quit"):
-			get_tree().quit()
+			get_tree().change_scene("res://levels/menu/Menu.tscn")
 	elif Input.is_action_just_released("ui_cancel"):
 		get_tree().paused = true
 		visible = true

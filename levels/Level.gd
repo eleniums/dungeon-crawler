@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	Engine.start_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +16,7 @@ func _process(_delta):
 		Engine.add_explosion(Engine.player.position)
 		Engine.player.disable()
 	elif $HUD/GameOver.visible and (Input.is_action_just_released("ui_accept") or Input.is_action_just_released("ui_cancel")):
-		get_tree().quit()
+		get_tree().change_scene("res://levels/menu/Menu.tscn")
 		
 
 func update_money():

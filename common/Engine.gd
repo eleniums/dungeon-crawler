@@ -42,6 +42,13 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func start_game():
 	fader = get_node("/root/Main/HUD/Fader")
 	
 	players = get_node("/root/Main/Players")
@@ -59,10 +66,6 @@ func _ready():
 	rng.randomize()
 
 	reset_level()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func reset_level():
 	print("Generating level...")
