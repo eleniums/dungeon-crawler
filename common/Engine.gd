@@ -65,12 +65,12 @@ func reset_level():
 	print("Generating level...")
 	
 	# clear out all existing stuff first
-	delete_children(players)
-	delete_children(doodads)
-	delete_children(items)
 	delete_children(weapons)
 	delete_children(enemies)
+	delete_children(items)
+	delete_children(doodads)
 	delete_children(explosions)
+	delete_children(players)
 	
 	# game has 18 x 10 usable squares
 	var exists = []
