@@ -124,7 +124,7 @@ func reset_level():
 		# range increases with floor level, 100 max but rand can go higher than 100, making lower numbers less likely
 		var enemy_roll = clamp(get_rand(0, 70 + current_level), 0, 100)
 		print("Enemy roll: " + str(enemy_roll))
-		if enemy_roll >= 70: # tier 3 enemies, strongest
+		if enemy_roll >= 60: # tier 3 enemies, strongest
 			if get_rand(0,100) >= 50:
 				var enemy = add_new(skull_face, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
@@ -133,7 +133,7 @@ func reset_level():
 				var enemy = add_new(green_slime, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
-		elif enemy_roll >= 45: # tier 2 enemies
+		elif enemy_roll >= 30: # tier 2 enemies
 			if get_rand(0,100) >= 50:
 				var enemy = add_new(little_devil, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
