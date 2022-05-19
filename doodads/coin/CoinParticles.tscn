@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://doodads/coin/CoinParticles.gd" type="Script" id=1]
+
+[node name="CoinParticles" type="CPUParticles2D"]
+emitting = false
+lifetime = 0.25
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+angular_velocity_random = 0.5
+radial_accel = 60.0
+angle = 90.0
+angle_random = 0.75
+color = Color( 1, 0.988235, 0.541176, 0.67451 )
+script = ExtResource( 1 )
