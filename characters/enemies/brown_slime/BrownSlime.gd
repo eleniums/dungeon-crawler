@@ -84,4 +84,4 @@ func _on_Hitbox_area_entered(area):
 			print("Monster defeated.")
 			Engine.add_explosion(position)
 			for _i in COINS_HELD:
-				Engine.add_coin_drop(position)
+				Engine.call_deferred("add_coin_drop", position)
