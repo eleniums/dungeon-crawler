@@ -8,7 +8,7 @@ enum MenuState {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CanvasLayer/MainMenu/VBoxContainer/Start.grab_focus()
+	change_menu(MenuState.MAIN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,11 +17,15 @@ func _process(_delta):
 		change_menu(MenuState.MAIN)
 	elif $CanvasLayer/Credits.visible and Input.is_action_just_pressed("ui_accept"):
 		change_menu(MenuState.MAIN)
+	elif Input.is_action_just_pressed("ui_cancel"):
+		Engine.save_scores()
+		get_tree().quit()
 
 func change_menu(new_menu):
 	hide_menus()
 	match new_menu:
 		MenuState.MAIN:
+			$CanvasLayer/MainMenu/Hiscores.text = "Hi-score - Coins: $" + str(Engine.hiscore_coins) + ", Floors: " + str(Engine.hiscore_floors)
 			$CanvasLayer/MainMenu.visible = true
 			$CanvasLayer/MainMenu/VBoxContainer/Start.grab_focus()
 		MenuState.INSTRUCTIONS:
