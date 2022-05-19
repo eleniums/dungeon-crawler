@@ -48,4 +48,4 @@ func update_health():
 func _on_Fader_faded_to_black():
 	print("Player exited level.")
 	Engine.current_level += 1
-	Engine.reset_level()
+	Engine.call_deferred("reset_level")
