@@ -20,3 +20,4 @@ func _on_Coin_area_entered(_area):
 	queue_free()
 	Engine.money += 1
 	print("Collected coin, +1 to money. Total money: " + str(Engine.money))
+	Engine.add_coin_particles(position)

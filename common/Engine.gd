@@ -34,6 +34,7 @@ var skull_face = preload("res://characters/enemies/skull_face/SkullFace.tscn")
 
 var arrow = preload("res://weapons/arrow/Arrow.tscn")
 var explosion = preload("res://doodads/explosion/Explosion.tscn")
+var coin_particles = preload("res://doodads/coin/CoinParticles.tscn")
 
 var seeded_rng = RandomNumberGenerator.new()
 var rng = RandomNumberGenerator.new()
@@ -220,6 +221,12 @@ func add_coin_drop(pos: Vector2):
 	pos.y += rng.randi_range(-8,8)
 	new_coin.position = pos
 	items.add_child(new_coin)
+	
+func add_coin_particles(pos: Vector2):
+	var new_coin_particles = coin_particles.instance()
+	new_coin_particles.position = pos
+	new_coin_particles.emitting = true
+	explosions.add_child(new_coin_particles)
 	
 func add_new(preload_node, pos, dest_node):
 	var new_node = preload_node.instance()
