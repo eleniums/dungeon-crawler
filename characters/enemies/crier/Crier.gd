@@ -2,14 +2,13 @@ extends KinematicBody2D
 
 export var MOVE_SPEED = 45
 export var DIRECTION = Vector2(1,1)
+export var HP = 1
 export var TOUCH_DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
 var _v_timer = 0
 var _hit_timer = 0
-
-var _hp = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -82,10 +81,10 @@ func _on_Hitbox_area_entered(area):
 			dir = Vector2.LEFT
 		Engine.hurt_player(TOUCH_DAMAGE, dir)
 	elif area.is_in_group("player_weapon"):
-		_hp -= Engine.weapon_damage
+		HP -= Engine.weapon_damage
 		_hit_timer = 0.15
-		print("Monster took " + str(Engine.weapon_damage) + " damage. HP remaining: " + str(_hp))
-		if _hp <= 0:
+		print("Monster took " + str(Engine.weapon_damage) + " damage. HP remaining: " + str(HP))
+		if HP <= 0:
 			queue_free()
 			print("Monster defeated.")
 			Engine.add_explosion(position)

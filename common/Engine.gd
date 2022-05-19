@@ -153,6 +153,7 @@ func fire_arrow(pos: Vector2, dir: Vector2):
 	new_arrow.position = pos
 	new_arrow.DIRECTION = dir
 	weapons.add_child(new_arrow)
+	return new_arrow
 
 func add_explosion(pos: Vector2):
 	var new_explosion = explosion.instance()
