@@ -48,4 +48,5 @@ func _on_Quit_pressed():
 
 func _on_Fader_faded_to_black():
 	# fading complete, start game
+	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://levels/main/Main.tscn")
