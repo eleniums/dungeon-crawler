@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,7 +20,7 @@ func _process(_delta):
 		Engine.player.disable()
 
 func update_money():
-	$HUD/Money.text = "$" + str(Engine.money)
+	$HUD/Money.text = "$" + str(Engine.money) + "  Lvl " + str(Engine.current_level)
 	
 func update_health():
 	if Engine.current_hp >= 2:
@@ -43,3 +43,9 @@ func update_health():
 		$HUD/Health2.animation = "empty"
 	if Engine.current_hp <= 4:
 		$HUD/Health3.animation = "empty"
+
+
+func _on_Fader_faded_to_black():
+	print("Player exited level.")
+	Engine.current_level += 1
+	Engine.call_deferred("reset_level")

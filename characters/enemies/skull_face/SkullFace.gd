@@ -2,14 +2,13 @@ extends KinematicBody2D
 
 export var MOVE_SPEED = 40
 export var DIRECTION = Vector2.RIGHT
-export var TOUCH_DAMAGE = 1
+export var HP = 3
+export var DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
 var _hit_timer = 0
 var _arrow_cooldown = 0
-
-var _hp = 3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,7 +44,8 @@ func ai(delta):
 	if $RayCast2D.is_colliding():
 		print("Monster sees player! Firing arrow.")
 		var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
-		Engine.fire_arrow(pos, DIRECTION)
+		var arrow = Engine.fire_arrow(pos, DIRECTION)
+		arrow.DAMAGE = DAMAGE
 		_arrow_cooldown = 3.0
 
 func handle_movement(delta):
@@ -86,12 +86,12 @@ func _on_Hitbox_area_entered(area):
 		var dir = Vector2.RIGHT
 		if area.global_position.x < global_position.x:
 			dir = Vector2.LEFT
-		Engine.hurt_player(TOUCH_DAMAGE, dir)
+		Engine.hurt_player(DAMAGE, dir)
 	elif area.is_in_group("player_weapon"):
-		_hp -= Engine.weapon_damage
+		HP -= Engine.weapon_damage
 		_hit_timer = 0.15
-		print("Monster took " + str(Engine.weapon_damage) + " damage. HP remaining: " + str(_hp))
-		if _hp <= 0:
+		print("Monster took " + str(Engine.weapon_damage) + " damage. HP remaining: " + str(HP))
+		if HP <= 0:
 			queue_free()
 			print("Monster defeated.")
 			var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
