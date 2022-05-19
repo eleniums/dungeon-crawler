@@ -131,7 +131,9 @@ func reset_level():
 		print("Enemy roll: " + str(enemy_roll))
 		if enemy_roll >= 60: # tier 3 enemies, strongest
 			if get_rand(0,100) >= 50:
-				var enemy = add_new(skull_face, get_available_position(exists), enemies)
+				var skull_pos = get_available_position(exists)
+				skull_pos.y -= 10
+				var enemy = add_new(skull_face, skull_pos, enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
 			else:
