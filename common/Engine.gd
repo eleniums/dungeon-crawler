@@ -54,9 +54,6 @@ func _ready():
 
 	reset_level()
 
-	# need to do this after level generation, otherwise player doesn't exist
-	player = get_node("/root/Main/Players/Player_Knight")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -81,7 +78,7 @@ func reset_level():
 	print("Adding player...")
 	var player_pos = get_available_position(exists)
 	player_pos.y -= 8 # adjust player position since sprite has empty space
-	add_new(knight, player_pos, players)
+	player = add_new(knight, player_pos, players)
 	
 	# add exit second to make sure it can be placed
 	print("Adding exit...")
