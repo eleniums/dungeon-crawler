@@ -4,6 +4,7 @@ var max_hp = 6
 var current_hp = 6
 var money = 0
 var weapon_damage = 1
+var current_level = 1
 
 var player = null
 var fader = null
@@ -112,6 +113,8 @@ func reset_level():
 			add_new(health_potion, get_available_position(exists), items)
 	
 	# add enemies
+	print("Adding enemies...")
+	# TODO: add enemies based on current level
 	
 	# all done, fade in and begin!
 	fader.fade_in()
