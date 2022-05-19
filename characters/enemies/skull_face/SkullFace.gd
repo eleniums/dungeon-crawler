@@ -3,8 +3,7 @@ extends KinematicBody2D
 export var MOVE_SPEED = 40
 export var DIRECTION = Vector2.RIGHT
 export var HP = 3
-export var TOUCH_DAMAGE = 1
-export var ARROW_DAMAGE = 1
+export var DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
@@ -46,7 +45,7 @@ func ai(delta):
 		print("Monster sees player! Firing arrow.")
 		var pos = Vector2(position.x, position.y + $AnimatedSprite.frames.get_frame("idle", 0).get_height() / 4)
 		var arrow = Engine.fire_arrow(pos, DIRECTION)
-		arrow.DAMAGE = ARROW_DAMAGE
+		arrow.DAMAGE = DAMAGE
 		_arrow_cooldown = 3.0
 
 func handle_movement(delta):
@@ -87,7 +86,7 @@ func _on_Hitbox_area_entered(area):
 		var dir = Vector2.RIGHT
 		if area.global_position.x < global_position.x:
 			dir = Vector2.LEFT
-		Engine.hurt_player(TOUCH_DAMAGE, dir)
+		Engine.hurt_player(DAMAGE, dir)
 	elif area.is_in_group("player_weapon"):
 		HP -= Engine.weapon_damage
 		_hit_timer = 0.15

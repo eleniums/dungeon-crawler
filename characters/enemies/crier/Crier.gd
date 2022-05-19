@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var MOVE_SPEED = 45
 export var DIRECTION = Vector2(1,1)
 export var HP = 1
-export var TOUCH_DAMAGE = 1
+export var DAMAGE = 1
 
 var _velocity = Vector2()
 var _timer = 0
@@ -79,7 +79,7 @@ func _on_Hitbox_area_entered(area):
 		var dir = Vector2.RIGHT
 		if area.global_position.x < global_position.x:
 			dir = Vector2.LEFT
-		Engine.hurt_player(TOUCH_DAMAGE, dir)
+		Engine.hurt_player(DAMAGE, dir)
 	elif area.is_in_group("player_weapon"):
 		HP -= Engine.weapon_damage
 		_hit_timer = 0.15
