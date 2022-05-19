@@ -34,7 +34,10 @@ var skull_face = preload("res://characters/enemies/skull_face/SkullFace.tscn")
 
 var arrow = preload("res://weapons/arrow/Arrow.tscn")
 var explosion = preload("res://doodads/explosion/Explosion.tscn")
+var coin_particles = preload("res://doodads/coin/CoinParticles.tscn")
+var potion_particles = preload("res://doodads/health_potion/PotionParticles.tscn")
 
+var seeded_rng = RandomNumberGenerator.new()
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -47,10 +50,13 @@ func _ready():
 	weapons = get_node("/root/Main/Weapons")
 	enemies = get_node("/root/Main/Enemies")
 	explosions = get_node("/root/Main/Explosions")
-	
+
 	# used for level generation so seeds can be reproduced
-	rng.randomize() # initialize with a random time-based seed
-	#rng.seed = hash("testseed") # initialize with a user provided seed
+	seeded_rng.randomize() # initialize with a random time-based seed
+	#seeded_rng.seed = hash("testseed") # initialize with a user provided seed
+
+	# used for random events not based on the level seed
+	rng.randomize()
 
 	reset_level()
 
@@ -136,28 +142,34 @@ func reset_level():
 				var enemy = add_new(skull_face, skull_pos, enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
+				enemy.COINS_HELD += get_rand(0,3)
 			else:
 				var enemy = add_new(green_slime, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
+				enemy.COINS_HELD += get_rand(0,3)
 		elif enemy_roll >= 30: # tier 2 enemies
 			if get_rand(0,100) >= 50:
 				var enemy = add_new(little_devil, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
+				enemy.COINS_HELD += get_rand(0,3)
 			else:
 				var enemy = add_new(brown_slime, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
+				enemy.COINS_HELD += get_rand(0,3)
 		else: # tier 1 enemies, weakest
 			if get_rand(0,100) >= 50:
 				var enemy = add_new(crier, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
+				enemy.COINS_HELD += get_rand(0,3)
 			else:
 				var enemy = add_new(tuskie, get_available_position(exists), enemies)
 				enemy.HP += enemy_hp_mod
 				enemy.DAMAGE += enemy_dmg_mod
+				enemy.COINS_HELD += get_rand(0,3)
 	
 	# all done, fade in and begin!
 	fader.fade_in()
@@ -183,7 +195,7 @@ func get_available_position(exists) -> Vector2:
 
 func get_rand(low_inclusive:int, high_inclusive:int):
 	# generates a random number in the given range, inclusive
-	return rng.randi_range(low_inclusive, high_inclusive)
+	return seeded_rng.randi_range(low_inclusive, high_inclusive)
 
 func hurt_player(damage, dir):
 	if !player.is_invincible():
@@ -203,6 +215,25 @@ func add_explosion(pos: Vector2):
 	new_explosion.position = pos
 	new_explosion.playing = true
 	explosions.add_child(new_explosion)
+
+func add_coin_drop(pos: Vector2):
+	var new_coin = coin.instance()
+	pos.x += rng.randi_range(-8,8)
+	pos.y += rng.randi_range(-8,8)
+	new_coin.position = pos
+	items.add_child(new_coin)
+	
+func add_coin_particles(pos: Vector2):
+	var new_coin_particles = coin_particles.instance()
+	new_coin_particles.position = pos
+	new_coin_particles.emitting = true
+	explosions.add_child(new_coin_particles)
+	
+func add_potion_particles():
+	var new_potion_particles = potion_particles.instance()
+	new_potion_particles.position.y += 8
+	new_potion_particles.emitting = true
+	player.add_child(new_potion_particles)
 	
 func add_new(preload_node, pos, dest_node):
 	var new_node = preload_node.instance()

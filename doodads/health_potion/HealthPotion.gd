@@ -31,4 +31,5 @@ func _on_HealthPotion_area_entered(_area):
 	Engine.current_hp += _healing_potency
 	if Engine.current_hp > Engine.max_hp:
 		Engine.current_hp = Engine.max_hp
+	Engine.add_potion_particles()
 	print("Collected health potion, +" + str(_healing_potency) + " to hp. Current HP: " + str(Engine.current_hp))
