@@ -12,4 +12,4 @@ dest_files=[ "res://.import/Moon-ruins_loop.ogg-035efa730f5f49a49556bbf6a8d6af17
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=5.2
