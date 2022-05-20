@@ -17,7 +17,7 @@ func _process(_delta):
 		change_menu(MenuState.MAIN)
 	elif $CanvasLayer/Credits.visible and Input.is_action_just_pressed("ui_accept"):
 		change_menu(MenuState.MAIN)
-	elif Input.is_action_just_pressed("ui_cancel"):
+	elif $CanvasLayer/MainMenu.visible and Input.is_action_just_pressed("ui_cancel"):
 		Engine.save_scores()
 		get_tree().quit()
 
