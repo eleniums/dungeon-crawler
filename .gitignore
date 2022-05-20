@@ -10,3 +10,6 @@ data_*/
 
 # macOS files
 .DS_Store
+
+# exported binaries
+builds/
