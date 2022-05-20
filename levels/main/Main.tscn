@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/sprites/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://levels/Pause.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/fonts/PeaberryBase.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://levels/Level.gd" type="Script" id=5]
 [ext_resource path="res://doodads/health/Health.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/mixkit-cool-interface-click-tone-2568.wav" type="AudioStream" id=7]
 [ext_resource path="res://common/Fader.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1057,6 +1058,9 @@ Press Esc to resume
 Q to stop playing"
 align = 1
 valign = 1
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="PauseMenu/PauseContainer"]
+stream = ExtResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2

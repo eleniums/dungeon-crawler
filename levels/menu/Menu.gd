@@ -15,8 +15,10 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("left_mouse"):
 		if $CanvasLayer/Instructions.visible or $CanvasLayer/Credits.visible:
+			$AudioClick.play()
 			change_menu(MenuState.MAIN)
 	elif $CanvasLayer/MainMenu.visible and Input.is_action_just_pressed("ui_cancel"):
+		$AudioClick.play()
 		Engine.save_scores()
 		get_tree().quit()
 
@@ -39,15 +41,19 @@ func hide_menus():
 	$CanvasLayer/Credits.visible = false
 
 func _on_Start_pressed():
+	$AudioClick.play()
 	$CanvasLayer/Fader.fade_to_black()
 
 func _on_Instructions_pressed():
+	$AudioClick.play()
 	change_menu(MenuState.INSTRUCTIONS)
 
 func _on_Credits_pressed():
+	$AudioClick.play()
 	change_menu(MenuState.CREDITS)
 
 func _on_Quit_pressed():
+	$AudioClick.play()
 	Engine.save_scores()
 	get_tree().quit()
 
