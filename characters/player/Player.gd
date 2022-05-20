@@ -69,6 +69,8 @@ func is_invincible():
 	return _invincibility_timer > 0
 
 func initiate_knockback(dir: Vector2):
+	$AudioOuch.play()
+	
 	_knockback_dir = dir
 	_knockback_timer = 0.05
 	_invincibility_timer = 0.75
