@@ -12,7 +12,9 @@ config_version=4
 
 config/name="dungeon-crawler"
 run/main_scene="res://levels/menu/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/icons/knight.png"
+config/macos_native_icon="res://assets/icons/knight.icns"
+config/windows_native_icon="res://assets/icons/knight.ico"
 
 [autoload]
 
