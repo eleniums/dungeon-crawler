@@ -13,9 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if $CanvasLayer/Instructions.visible and Input.is_action_just_pressed("ui_accept"):
+	if $CanvasLayer/Instructions.visible and (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel")):
 		change_menu(MenuState.MAIN)
-	elif $CanvasLayer/Credits.visible and Input.is_action_just_pressed("ui_accept"):
+	elif $CanvasLayer/Credits.visible and (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel")):
 		change_menu(MenuState.MAIN)
 	elif $CanvasLayer/MainMenu.visible and Input.is_action_just_pressed("ui_cancel"):
 		Engine.save_scores()
