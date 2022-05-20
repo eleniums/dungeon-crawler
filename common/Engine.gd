@@ -146,8 +146,8 @@ func reset_level():
 	
 	# add enemies
 	print("Adding enemies...")
-	var enemy_hp_mod = current_level / 20
-	var enemy_dmg_mod = clamp(current_level / 20, 0, 5)
+	var enemy_hp_mod = current_level / 30
+	var enemy_dmg_mod = clamp(current_level / 30, 0, 5)
 	var min_enemies = 3
 	var max_enemies = clamp(current_level / 5, min_enemies, 5) + 1 # min of 3-4 enemies, max of 5-6 enemies
 	var num_enemies = get_rand(min_enemies, max_enemies)
