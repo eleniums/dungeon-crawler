@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Effect14.png-643ff3b564a4665af4327d76493b468a.stex"
+path="res://.import/Effect14.png-9bab1e143aab212fc60fe3589cec459b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Effect14.png"
-dest_files=[ "res://.import/Effect14.png-643ff3b564a4665af4327d76493b468a.stex" ]
+source_file="res://assets/sprites/Effect14.png"
+dest_files=[ "res://.import/Effect14.png-9bab1e143aab212fc60fe3589cec459b.stex" ]
 
 [params]
 

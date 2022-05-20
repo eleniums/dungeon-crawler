@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://characters/player/knight/Knight.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/PeaberryBase.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/PeaberryBase.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://characters/enemies/green_slime/GreenSlime.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/menu/Menu.gd" type="Script" id=4]
 [ext_resource path="res://common/Fader.gd" type="Script" id=5]
