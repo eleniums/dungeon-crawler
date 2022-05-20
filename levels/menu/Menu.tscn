@@ -218,7 +218,6 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
 
 [node name="AudioClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
