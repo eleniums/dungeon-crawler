@@ -1074,12 +1074,15 @@ pause_mode = 2
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 3 )
+volume_db = -15.0
+autoplay = true
 
 [node name="AudioGameOver" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
 
 [node name="AudioHealthPotion" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 9 )
+volume_db = -6.0
 
 [node name="AudioCoin" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 10 )
@@ -1089,6 +1092,7 @@ stream = ExtResource( 11 )
 
 [node name="AudioNextLevel" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 12 )
+volume_db = -10.0
 
 [node name="AudioOpenLadder" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 13 )
