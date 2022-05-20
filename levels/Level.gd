@@ -11,6 +11,12 @@ func _process(_delta):
 	update_money()
 	update_health()
 	
+	# check if all enemies have been destroyed
+	if !Engine.exit.is_open() and $Enemies.get_child_count() <= 0:
+		$SFX/AudioOpenLadder.play()
+		Engine.exit.open_ladder()
+	
+	# check for game over
 	if Engine.current_hp <= 0 and $HUD/GameOver.visible == false:
 		$SFX/AudioGameOver.play()
 		$HUD/GameOver.visible = true
