@@ -232,6 +232,7 @@ func fire_arrow(pos: Vector2, dir: Vector2):
 	return new_arrow
 
 func add_explosion(pos: Vector2):
+	get_node("/root/Main/SFX/AudioDeath").play()
 	var new_explosion = explosion.instance()
 	new_explosion.position = pos
 	new_explosion.playing = true

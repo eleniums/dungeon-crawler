@@ -12,7 +12,7 @@ func _process(_delta):
 	update_health()
 	
 	if Engine.current_hp <= 0 and $HUD/GameOver.visible == false:
-		$AudioGameOver.play()
+		$SFX/AudioGameOver.play()
 		$HUD/GameOver.visible = true
 		Engine.add_explosion(Engine.player.position)
 		Engine.player.disable()
