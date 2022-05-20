@@ -18,6 +18,8 @@ Project -> Open Project Data Folder
 - https://emhuo.itch.io/peaberry-pixel-font
 - https://blackdragon1727.itch.io/pixel-mini-effect
 - https://wingless-seraph.net/en/material-music_dangeon.html
+- https://mixkit.co/free-sound-effects/game/
+- https://pixabay.com/sound-effects/search/game/
 
 ## References
 - https://docs.godotengine.org/en/stable/tutorials/2d/using_tilemaps.html
@@ -26,3 +28,4 @@ Project -> Open Project Data Folder
 - https://godotengine.org/qa/3218/how-to-create-a-custom-signal-in-gdscript
 - https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html
 - https://anyconv.com/png-to-icns-converter/
+- https://convertio.co/mp3-wav/
