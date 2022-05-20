@@ -57,6 +57,20 @@ custom_fonts/font = SubResource( 4 )
 text = "Hi-score - Coins: $0, Floors: 0"
 valign = 2
 
+[node name="Version" type="Label" parent="CanvasLayer/MainMenu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -51.0
+margin_top = -16.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "v0.0.0"
+align = 2
+valign = 2
+
 [node name="Player_Knight" parent="CanvasLayer/MainMenu" instance=ExtResource( 1 )]
 position = Vector2( 49, 66 )
 scale = Vector2( 3, 3 )

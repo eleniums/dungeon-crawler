@@ -1,5 +1,7 @@
 extends Node
 
+var version = "v0.1.0"
+
 var max_hp = 6
 var current_hp = 6
 var money = 0

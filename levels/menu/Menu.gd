@@ -25,6 +25,7 @@ func change_menu(new_menu):
 	hide_menus()
 	match new_menu:
 		MenuState.MAIN:
+			$CanvasLayer/MainMenu/Version.text = Engine.version
 			$CanvasLayer/MainMenu/Hiscores.text = "Hi-score - Coins: $" + str(Engine.hiscore_coins) + ", Floors: " + str(Engine.hiscore_floors)
 			$CanvasLayer/MainMenu.visible = true
 			$CanvasLayer/MainMenu/VBoxContainer/Start.grab_focus()
