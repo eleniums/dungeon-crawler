@@ -53,7 +53,7 @@ func _process(delta):
 		$Weapon.visible = true
 		$Weapon/WeaponHitbox/CollisionShape2D.disabled = false
 		$WeaponTimer.start()
-		_weapon_cooldown = 0.45
+		_weapon_cooldown = 0.35
 		
 	if _invincibility_timer > 0:
 		_invincibility_timer -= delta
