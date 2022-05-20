@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Moon-ruins_loop.ogg-035efa730f5f49a49556bbf6a8d6af17.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Moon-ruins_loop.ogg"
+dest_files=[ "res://.import/Moon-ruins_loop.ogg-035efa730f5f49a49556bbf6a8d6af17.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
