@@ -18,8 +18,8 @@ Project -> Open Project Data Folder
 - https://emhuo.itch.io/peaberry-pixel-font
 - https://blackdragon1727.itch.io/pixel-mini-effect
 - https://wingless-seraph.net/en/material-music_dangeon.html
-- https://mixkit.co/free-sound-effects/game/
-- https://pixabay.com/sound-effects/search/game/
+- https://mixkit.co/free-sound-effects/game
+- https://pixabay.com/sound-effects/search/game
 
 ## References
 - https://docs.godotengine.org/en/stable/tutorials/2d/using_tilemaps.html
