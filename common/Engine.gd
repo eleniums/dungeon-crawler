@@ -12,6 +12,7 @@ var hiscore_coins = 0
 var hiscore_floors = 0
 
 var player = null
+var exit = null
 var fader = null
 
 var players = null
@@ -109,7 +110,7 @@ func reset_level():
 	
 	# add exit second to make sure it can be placed
 	print("Adding exit...")
-	add_new(ladder, get_available_position(exists), doodads)
+	exit = add_new(ladder, get_available_position(exists), doodads)
 	
 	# add torches to wall
 	print("Adding wall torches...")

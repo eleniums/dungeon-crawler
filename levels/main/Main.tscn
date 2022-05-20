@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/sprites/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://levels/Pause.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/sfx/collectcoin-6075.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sfx/splat2ogg-14668.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/sfx/teleport-14639.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sfx/open-the-can-14493.wav" type="AudioStream" id=13]
 [ext_resource path="res://common/Fader.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1087,5 +1088,8 @@ stream = ExtResource( 11 )
 
 [node name="AudioNextLevel" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 12 )
+
+[node name="AudioOpenLadder" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 13 )
 
 [connection signal="faded_to_black" from="HUD/Fader" to="." method="_on_Fader_faded_to_black"]

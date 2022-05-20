@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://doodads/ladder/Ladder.gd" type="Script" id=2]
@@ -7,11 +7,20 @@
 atlas = ExtResource( 1 )
 region = Rect2( 144, 48, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 48, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "default",
+"name": "open",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "closed",
 "speed": 5.0
 } ]
 
@@ -20,6 +29,7 @@ extents = Vector2( 3, 4 )
 
 [node name="Ladder" type="AnimatedSprite"]
 frames = SubResource( 2 )
+animation = "closed"
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="Area2D" parent="."]
