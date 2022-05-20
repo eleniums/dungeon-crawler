@@ -15,6 +15,9 @@ Windows: `%APPDATA%\Godot\app_userdata\[project_name]`
 macOS: `~/Library/Application Support/Godot/app_userdata/[project_name]`
 Linux: `~/.local/share/godot/app_userdata/[project_name]`
 
+Shortcut to this folder can be accessed from Godot menu:
+Project -> Open Project Data Folder
+
 ## References
 - https://docs.godotengine.org/en/stable/tutorials/2d/using_tilemaps.html
 - https://docs.godotengine.org/en/stable/tutorials/physics/physics_introduction.html
