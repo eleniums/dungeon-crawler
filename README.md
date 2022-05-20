@@ -6,6 +6,7 @@ Roguelike dungeon crawler game created for a hackathon.
 - https://pixel-poem.itch.io/dungeon-assetpuck
 - https://emhuo.itch.io/peaberry-pixel-font
 - https://blackdragon1727.itch.io/pixel-mini-effect
+- https://wingless-seraph.net/en/material-music_dangeon.html
 
 ## Save Data
 Hiscores are stored encrypted here: `user://scores.save`
