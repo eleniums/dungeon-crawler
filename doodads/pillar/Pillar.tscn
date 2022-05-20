@@ -50,10 +50,12 @@ frames = SubResource( 2 )
 
 [node name="MiddleAnimatedSprite3" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 14 )
+z_index = 1
 frames = SubResource( 6 )
 
 [node name="BottomAnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 28 )
+z_index = 1
 frames = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
