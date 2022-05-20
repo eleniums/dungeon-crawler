@@ -12,4 +12,4 @@ dest_files=[ "res://.import/Conquest_loop.ogg-eb51d5146a3c277255507c02a67c1326.o
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=5.1
