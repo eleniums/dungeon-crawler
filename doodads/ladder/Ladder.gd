@@ -12,5 +12,6 @@ func _ready():
 
 
 func _on_Hitbox_area_entered(_area):
+	get_node("/root/Main/SFX/AudioNextLevel").play()
 	Engine.player.disable()
 	Engine.fader.fade_to_black()
