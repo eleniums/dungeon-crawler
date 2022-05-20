@@ -102,11 +102,20 @@ func reset_level():
 	for _i in range(180):
 		exists.append(false)
 	
-	# add player first to make sure they have a spot
+	# add player first and always put them in the same spot
 	print("Adding player...")
-	var player_pos = get_available_position(exists)
+	var player_pos = get_position_manually(exists, 72)
 	player_pos.y -= 8 # adjust player position since sprite has empty space
 	player = add_new(knight, player_pos, players)
+	
+	# free up space around player so they won't be hit immediately
+	exists[36] = true
+	exists[54] = true
+	exists[55] = true
+	exists[73] = true
+	exists[90] = true
+	exists[91] = true
+	exists[108] = true
 	
 	# add exit second to make sure it can be placed
 	print("Adding exit...")
@@ -204,6 +213,9 @@ func get_available_position(exists) -> Vector2:
 	while exists[loc] == true:
 		loc = get_rand(0,179)
 
+	return get_position_manually(exists, loc)
+	
+func get_position_manually(exists, loc) -> Vector2:
 	# spot is now in use
 	exists[loc] = true
 	
