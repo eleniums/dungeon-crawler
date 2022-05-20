@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/sprites/Dungeon_Tileset.png" type="Texture" id=1]
 [ext_resource path="res://levels/Pause.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sfx/mixkit-cool-interface-click-tone-2568.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sfx/mixkit-player-losing-or-failing-2042.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sfx/mixkit-video-game-health-recharge-2837.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/collectcoin-6075.wav" type="AudioStream" id=10]
 [ext_resource path="res://common/Fader.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1064,14 +1065,19 @@ valign = 1
 [node name="AudioClick" type="AudioStreamPlayer" parent="PauseMenu/PauseContainer"]
 stream = ExtResource( 7 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="Node" parent="."]
 pause_mode = 2
+
+[node name="AudioMusic" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 3 )
 
-[node name="AudioGameOver" type="AudioStreamPlayer" parent="."]
+[node name="AudioGameOver" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
 
-[node name="AudioHealthPotion" type="AudioStreamPlayer" parent="."]
+[node name="AudioHealthPotion" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 9 )
+
+[node name="AudioCoin" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 10 )
 
 [connection signal="faded_to_black" from="HUD/Fader" to="." method="_on_Fader_faded_to_black"]
