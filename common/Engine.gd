@@ -1,6 +1,6 @@
 extends Node
 
-var version = "v0.2.0"
+var version = "v0.2.1"
 
 var max_hp = 6
 var current_hp = 6
