@@ -28,5 +28,6 @@ Project -> Open Project Data Folder
 - https://godotengine.org/qa/3218/how-to-create-a-custom-signal-in-gdscript
 - https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html
 - https://docs.godotengine.org/en/3.1/classes/class_node.html#class-node-method-get-node
+- https://codeshack.io/images-sprite-sheet-generator/
 - https://anyconv.com/png-to-icns-converter/
 - https://convertio.co/mp3-wav/
