@@ -12,7 +12,9 @@ config_version=4
 
 config/name="dungeon-crawler"
 run/main_scene="res://levels/menu/Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/icons/knight.png"
+config/macos_native_icon="res://assets/icons/knight.icns"
+config/windows_native_icon="res://assets/icons/knight.ico"
 
 [autoload]
 
@@ -37,6 +39,16 @@ theme/use_hidpi=true
 quit={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left_mouse={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+enter={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

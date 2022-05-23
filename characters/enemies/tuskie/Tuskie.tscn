@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://characters/enemies/tuskie/Tuskie.gd" type="Script" id=1]
-[ext_resource path="res://assets/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )

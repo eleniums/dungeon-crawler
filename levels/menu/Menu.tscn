@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://characters/player/knight/Knight.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/PeaberryBase.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/PeaberryBase.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://characters/enemies/green_slime/GreenSlime.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/menu/Menu.gd" type="Script" id=4]
 [ext_resource path="res://common/Fader.gd" type="Script" id=5]
+[ext_resource path="res://assets/music/Moon-ruins_loop.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sfx/mixkit-cool-interface-click-tone-2568.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sprites/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=8]
+[ext_resource path="res://doodads/ladder/Ladder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://doodads/coin/Coin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://doodads/health_potion/HealthPotion.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -15,6 +21,22 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 8 )
+region = Rect2( 336, 24, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="DynamicFont" id=3]
 size = 8
@@ -55,6 +77,20 @@ margin_right = 152.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 4 )
 text = "Hi-score - Coins: $0, Floors: 0"
+valign = 2
+
+[node name="Version" type="Label" parent="CanvasLayer/MainMenu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -51.0
+margin_top = -16.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "v0.0.0"
+align = 2
 valign = 2
 
 [node name="Player_Knight" parent="CanvasLayer/MainMenu" instance=ExtResource( 1 )]
@@ -114,17 +150,64 @@ anchor_bottom = 1.0
 [node name="InstructionsLabel" type="Label" parent="CanvasLayer/Instructions"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 5.0
+margin_left = 26.0
+margin_top = 10.0
 margin_bottom = -5.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Use arrow keys to navigate
 Press Spacebar to use your sword
 Collect coins to increase your score
 Collect potions to recover health
-
-Descend into the depths of the dungeon and survive as long as possible!"
-align = 1
+Defeat  all enemies to open ladder
+"
 autowrap = true
+
+[node name="InstructionsLabel2" type="Label" parent="CanvasLayer/Instructions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 5.0
+margin_bottom = -19.0
+custom_fonts/font = SubResource( 5 )
+text = "Descend into the depths of the dungeon and survive as long as possible!"
+align = 1
+valign = 2
+autowrap = true
+
+[node name="Continue" type="Label" parent="CanvasLayer/Instructions"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -16.0
+margin_right = -3.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Press Enter"
+align = 2
+valign = 2
+
+[node name="Container" type="Control" parent="CanvasLayer/Instructions"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Weapon" type="AnimatedSprite" parent="CanvasLayer/Instructions/Container"]
+position = Vector2( 13, 37 )
+rotation = 1.5708
+frames = SubResource( 13 )
+
+[node name="Coin" parent="CanvasLayer/Instructions/Container" instance=ExtResource( 10 )]
+position = Vector2( 14, 54 )
+
+[node name="HealthPotion" parent="CanvasLayer/Instructions/Container" instance=ExtResource( 11 )]
+position = Vector2( 14, 74 )
+
+[node name="Ladder" parent="CanvasLayer/Instructions/Container" instance=ExtResource( 9 )]
+position = Vector2( 14, 96 )
+
+[node name="Player_Knight" parent="CanvasLayer/Instructions/Container" instance=ExtResource( 1 )]
+position = Vector2( 14, 7 )
+script = null
 
 [node name="Credits" type="Control" parent="CanvasLayer"]
 visible = false
@@ -157,9 +240,24 @@ custom_fonts/font = SubResource( 3 )
 text = "https://0x72.itch.io/dungeontileset-ii
 https://pixel-poem.itch.io/dungeon-assetpuck
 https://emhuo.itch.io/peaberry-pixel-font
-https://blackdragon1727.itch.io/pixel-mini-effect"
+https://blackdragon1727.itch.io/pixel-mini-effect
+https://wingless-seraph.net/en/material-music_dangeon.html"
 align = 1
 autowrap = true
+
+[node name="Continue" type="Label" parent="CanvasLayer/Credits"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -16.0
+margin_right = -3.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Press Enter"
+align = 2
+valign = 2
 
 [node name="Fader" type="ColorRect" parent="CanvasLayer"]
 modulate = Color( 0, 0, 0, 0 )
@@ -170,6 +268,14 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="AudioMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.0
+autoplay = true
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/Instructions" to="." method="_on_Instructions_pressed"]

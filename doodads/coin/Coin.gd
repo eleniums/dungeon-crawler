@@ -17,6 +17,7 @@ func _ready():
 
 
 func _on_Coin_area_entered(_area):
+	get_node("/root/Main/SFX/AudioCoin").play()
 	queue_free()
 	Engine.money += 1
 	print("Collected coin, +1 to money. Total money: " + str(Engine.money))

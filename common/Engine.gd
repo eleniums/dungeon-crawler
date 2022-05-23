@@ -1,5 +1,7 @@
 extends Node
 
+var version = "v0.2.1"
+
 var max_hp = 6
 var current_hp = 6
 var money = 0
@@ -10,6 +12,7 @@ var hiscore_coins = 0
 var hiscore_floors = 0
 
 var player = null
+var exit = null
 var fader = null
 
 var players = null
@@ -99,15 +102,24 @@ func reset_level():
 	for _i in range(180):
 		exists.append(false)
 	
-	# add player first to make sure they have a spot
+	# add player first and always put them in the same spot
 	print("Adding player...")
-	var player_pos = get_available_position(exists)
+	var player_pos = get_position_manually(exists, 72)
 	player_pos.y -= 8 # adjust player position since sprite has empty space
 	player = add_new(knight, player_pos, players)
 	
+	# free up space around player so they won't be hit immediately
+	exists[36] = true
+	exists[54] = true
+	exists[55] = true
+	exists[73] = true
+	exists[90] = true
+	exists[91] = true
+	exists[108] = true
+	
 	# add exit second to make sure it can be placed
 	print("Adding exit...")
-	add_new(ladder, get_available_position(exists), doodads)
+	exit = add_new(ladder, get_available_position(exists), doodads)
 	
 	# add torches to wall
 	print("Adding wall torches...")
@@ -144,8 +156,8 @@ func reset_level():
 	
 	# add enemies
 	print("Adding enemies...")
-	var enemy_hp_mod = current_level / 20
-	var enemy_dmg_mod = clamp(current_level / 20, 0, 5)
+	var enemy_hp_mod = current_level / 30
+	var enemy_dmg_mod = clamp(current_level / 30, 0, 5)
 	var min_enemies = 3
 	var max_enemies = clamp(current_level / 5, min_enemies, 5) + 1 # min of 3-4 enemies, max of 5-6 enemies
 	var num_enemies = get_rand(min_enemies, max_enemies)
@@ -201,6 +213,9 @@ func get_available_position(exists) -> Vector2:
 	while exists[loc] == true:
 		loc = get_rand(0,179)
 
+	return get_position_manually(exists, loc)
+	
+func get_position_manually(exists, loc) -> Vector2:
 	# spot is now in use
 	exists[loc] = true
 	
@@ -230,6 +245,7 @@ func fire_arrow(pos: Vector2, dir: Vector2):
 	return new_arrow
 
 func add_explosion(pos: Vector2):
+	get_node("/root/Main/SFX/AudioDeath").play()
 	var new_explosion = explosion.instance()
 	new_explosion.position = pos
 	new_explosion.playing = true

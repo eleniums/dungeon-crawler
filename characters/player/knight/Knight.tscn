@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://assets/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/slash-21834.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/ouch-sound-effect-30-11844.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
@@ -91,7 +93,6 @@ disabled = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -113,6 +114,12 @@ one_shot = true
 [node name="WeaponTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="AudioSlash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AudioOuch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
 [connection signal="timeout" from="WeaponTimer" to="." method="_on_WeaponTimer_timeout"]

@@ -49,10 +49,11 @@ func _process(delta):
 	if _weapon_cooldown > 0:
 		_weapon_cooldown -= delta
 	if Input.is_action_just_pressed("ui_select") and _weapon_cooldown <= 0:
+		$AudioSlash.play()
 		$Weapon.visible = true
 		$Weapon/WeaponHitbox/CollisionShape2D.disabled = false
 		$WeaponTimer.start()
-		_weapon_cooldown = 0.45
+		_weapon_cooldown = 0.35
 		
 	if _invincibility_timer > 0:
 		_invincibility_timer -= delta
@@ -68,6 +69,8 @@ func is_invincible():
 	return _invincibility_timer > 0
 
 func initiate_knockback(dir: Vector2):
+	$AudioOuch.play()
+	
 	_knockback_dir = dir
 	_knockback_timer = 0.05
 	_invincibility_timer = 0.75

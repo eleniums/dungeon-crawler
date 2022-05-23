@@ -99,3 +99,5 @@ func _on_Hitbox_area_entered(area):
 			Engine.add_explosion(pos)
 			for _i in COINS_HELD:
 				Engine.call_deferred("add_coin_drop", position)
+		else:
+			get_node("/root/Main/SFX/AudioHitEnemy").play()

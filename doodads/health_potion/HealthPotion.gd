@@ -27,6 +27,7 @@ func getLargePotion():
    return LARGE_POTION
 	
 func _on_HealthPotion_area_entered(_area):
+	get_node("/root/Main/SFX/AudioHealthPotion").play()
 	queue_free()
 	Engine.current_hp += _healing_potency
 	if Engine.current_hp > Engine.max_hp:

@@ -13,11 +13,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if $CanvasLayer/Instructions.visible and Input.is_action_just_pressed("ui_accept"):
+	if ($CanvasLayer/Instructions.visible or $CanvasLayer/Credits.visible) and (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("left_mouse")):
+		$AudioClick.play()
 		change_menu(MenuState.MAIN)
-	elif $CanvasLayer/Credits.visible and Input.is_action_just_pressed("ui_accept"):
-		change_menu(MenuState.MAIN)
-	elif Input.is_action_just_pressed("ui_cancel"):
+	elif $CanvasLayer/MainMenu.visible and Input.is_action_just_pressed("ui_cancel"):
+		$AudioClick.play()
 		Engine.save_scores()
 		get_tree().quit()
 
@@ -25,6 +25,7 @@ func change_menu(new_menu):
 	hide_menus()
 	match new_menu:
 		MenuState.MAIN:
+			$CanvasLayer/MainMenu/Version.text = Engine.version
 			$CanvasLayer/MainMenu/Hiscores.text = "Hi-score - Coins: $" + str(Engine.hiscore_coins) + ", Floors: " + str(Engine.hiscore_floors)
 			$CanvasLayer/MainMenu.visible = true
 			$CanvasLayer/MainMenu/VBoxContainer/Start.grab_focus()
@@ -39,15 +40,19 @@ func hide_menus():
 	$CanvasLayer/Credits.visible = false
 
 func _on_Start_pressed():
+	$AudioClick.play()
 	$CanvasLayer/Fader.fade_to_black()
 
 func _on_Instructions_pressed():
+	$AudioClick.play()
 	change_menu(MenuState.INSTRUCTIONS)
 
 func _on_Credits_pressed():
+	$AudioClick.play()
 	change_menu(MenuState.CREDITS)
 
 func _on_Quit_pressed():
+	$AudioClick.play()
 	Engine.save_scores()
 	get_tree().quit()
 
