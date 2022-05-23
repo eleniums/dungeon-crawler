@@ -1,5 +1,5 @@
 # dungeon-crawler
-Roguelike dungeon crawler game created for a hackathon.
+Roguelike dungeon crawler game created for HackInnLearn Summer 2022.
 
 ## Save Data
 Hiscores are stored encrypted here: `user://scores.save`
