@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="dungeon-crawler"
+config/name="Dungeon Crawler"
 run/main_scene="res://levels/menu/Menu.tscn"
 config/icon="res://assets/icons/knight.png"
 config/macos_native_icon="res://assets/icons/knight.icns"
