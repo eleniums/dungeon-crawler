@@ -5,9 +5,9 @@ Roguelike dungeon crawler game created for HackInnLearn Summer 2022.
 Hiscores are stored encrypted here: `user://scores.save`
 
 Godot puts user data here:
-Windows: `%APPDATA%\Godot\app_userdata\[project_name]`
-macOS: `~/Library/Application Support/Godot/app_userdata/[project_name]`
-Linux: `~/.local/share/godot/app_userdata/[project_name]`
+- Windows: `%APPDATA%\Godot\app_userdata\[project_name]`
+- macOS: `~/Library/Application Support/Godot/app_userdata/[project_name]`
+- Linux: `~/.local/share/godot/app_userdata/[project_name]`
 
 Shortcut to this folder can be accessed from Godot menu:
 Project -> Open Project Data Folder
